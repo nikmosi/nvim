@@ -9,6 +9,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    { 'Pocco81/auto-save.nvim' },
+    { 'lilydjwg/colorizer' },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',

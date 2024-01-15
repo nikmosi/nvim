@@ -12,6 +12,10 @@ vim.wo.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.undofile = true
 vim.opt.shell = "/bin/zsh"
+vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
+vim.api.nvim_set_keymap('n', ', ', ':nohlsearch<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'H', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'L', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 
 -- Mouse
 vim.opt.mouse = "a"
@@ -26,7 +30,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Clipboard
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Shorter messages
 vim.opt.shortmess:append("c")
