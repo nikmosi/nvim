@@ -44,10 +44,6 @@ require("lazy").setup({
         event = {'VimEnter'},
         dependencies = {'nvim-tree/nvim-web-devicons'},
         config = function() require('lsp-progress').setup() end
-    }, {
-        'glepnir/dashboard-nvim',
-        event = 'VimEnter',
-        dependencies = {{'nvim-tree/nvim-web-devicons'}}
     }, {"folke/which-key.nvim"},
        { 'hrsh7th/vim-vsnip' },
     {'hrsh7th/vim-vsnip-integ'},

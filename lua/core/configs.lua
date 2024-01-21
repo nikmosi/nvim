@@ -1,13 +1,22 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function(ev)
+        vim.api.nvim_set_keymap('n', '<F3>', [[:silent exec "!black -q %"<CR>]], { noremap = true, silent = true })
+        vim.opt.colorcolumn = "88"
+    end,
+})
+
 vim.g.did_load_filetypes = 1
 vim.g.formatoptions = "qrn1"
 vim.opt.showmode = false
 vim.opt.updatetime = 100
 vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.swapfile = false
 vim.wo.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.undofile = true
