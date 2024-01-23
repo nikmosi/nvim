@@ -9,11 +9,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    { 'wakatime/vim-wakatime', lazy = false },
     { 'Pocco81/auto-save.nvim' },
     { 'lilydjwg/colorizer' },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.5',
         dependencies = {'nvim-lua/plenary.nvim'}
     }, {'cooperuser/glowbeam.nvim'}, {'joshdick/onedark.vim'},
     {'rebelot/kanagawa.nvim'},
