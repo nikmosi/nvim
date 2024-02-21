@@ -9,6 +9,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+},
+
     { 'wakatime/vim-wakatime', lazy = false },
     { 'Pocco81/auto-save.nvim' },
     { 'lilydjwg/colorizer' },
