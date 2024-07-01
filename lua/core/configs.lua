@@ -4,7 +4,7 @@ vim.wo.relativenumber = true
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function(ev)
-        vim.api.nvim_set_keymap('n', '<F3>', [[:silent exec "!black -q %"<CR>]], { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<F3>', [[:silent exec "!ruff format %"<CR>]], { noremap = true, silent = true })
         vim.opt.colorcolumn = "88"
     end,
 })
@@ -20,7 +20,7 @@ vim.opt.swapfile = false
 vim.wo.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.undofile = true
-vim.opt.shell = "/bin/zsh"
+vim.opt.shell = "/usr/bin/fish"
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', ', ', ':nohlsearch<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
