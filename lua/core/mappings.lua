@@ -32,3 +32,13 @@ vim.keymap.set('n', '<s-Tab>', ':BufferLineCyclePrev<CR>')
 vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>')
 vim.keymap.set('n', '<leader>th', ':ToggleTerm direction=horizontal<CR>')
 vim.keymap.set('n', '<leader>tv', ':ToggleTerm direction=vertical size=40<CR>')
+
+-- Python
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function(ev)
+        vim.api.nvim_set_keymap('n', '<F3>', [[:silent exec "!ruff check --select I --fix %; ruff format %"<CR>]], { noremap = true, silent = true })
+        vim.opt.colorcolumn = "88"
+    end,
+})
+
