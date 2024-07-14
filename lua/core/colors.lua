@@ -10,4 +10,18 @@ function SetColor(color)
     -- vim.api.nvim_set_hl(0, "LineNr", {bg = "none"})
 end
 
-SetColor('kanagawa-wave')
+-- SetColor('kanagawa-wave')
+SetColor('catppuccin')
+require("catppuccin").setup({
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+    }
+})

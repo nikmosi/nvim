@@ -9,6 +9,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {'williamboman/mason-lspconfig.nvim'},
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

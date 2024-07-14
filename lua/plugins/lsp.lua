@@ -56,6 +56,15 @@ require('lspconfig').pyright.setup {
         },
     },
 }
-require 'lspconfig'.lua_ls.setup {
+require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
+}
+
+local lspconfig = require('lspconfig')
+
+lspconfig.ansiblels.setup {
+    on_attach = on_attach,
+    cmd = { "ansible-language-server", "--stdio" }, -- Change this if using a virtual environment
+    filetypes = { "yaml", "yml", "ansible" },
+    root_dir = lspconfig.util.root_pattern("roles", "playbooks")
 }
