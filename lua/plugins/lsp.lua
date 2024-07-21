@@ -43,19 +43,19 @@ require('lspconfig').ruff_lsp.setup {
         }
     }
 }
-require('lspconfig').pyright.setup {
-    on_attach = on_attach,
-    settings = {
-        pyright = {
-            disableOrganizeImports = true,
-        },
-        python = {
-            analysis = {
-                ignore = { '*' },
-            },
-        },
-    },
-}
+-- require('lspconfig').pyright.setup {
+--     on_attach = on_attach,
+--     settings = {
+--         pyright = {
+--             disableOrganizeImports = true,
+--         },
+--         -- python = {
+--         --     analysis = {
+--         --         ignore = { '*' },
+--         --     },
+--         -- },
+--     },
+-- }
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
 }

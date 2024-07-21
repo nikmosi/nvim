@@ -9,6 +9,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {'jose-elias-alvarez/null-ls.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
