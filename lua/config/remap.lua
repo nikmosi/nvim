@@ -11,3 +11,8 @@ vim.keymap.set('n', '<leader>bc', function()
   end
 end, { noremap = true, silent = true })
 vim.keymap.set("i", "jk", "<Esc>")
+
+-- Move between buffers using keys
+vim.keymap.set('n', 'L', vim.cmd.bnext, { noremap = true, silent = true })  -- Next buffer
+vim.keymap.set('n', 'H', vim.cmd.bprev, { noremap = true, silent = true })  -- Previous buffer
+vim.keymap.set('n', '<leader>C', vim.cmd.bdelete, { noremap = true, silent = true })  -- Delete current buffer
