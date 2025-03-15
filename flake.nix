@@ -21,7 +21,6 @@
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            lua-ls.enable = true;
             end-of-file-fixer.enable = true;
             check-added-large-files.enable = true;
             trim-trailing-whitespace.enable = true;
