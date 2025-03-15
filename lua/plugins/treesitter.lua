@@ -8,7 +8,7 @@ return {
         ensure_installed = { "c", "python" },
         sync_install = false,
         auto_install = true,
-        ignore_install = {},
+        ignore_install = { "gitcommit" },
         modules = {},
         highlight = {
           enable = true,
@@ -17,10 +17,10 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn",                -- Начало выделения
-            node_incremental = "grn",              -- Расширение выделения
-            scope_incremental = "grc",             -- Выделение scope (области)
-            node_decremental = "grm",              -- Сужение выделения
+            init_selection = "gnn",    -- Начало выделения
+            node_incremental = "grn",  -- Расширение выделения
+            scope_incremental = "grc", -- Выделение scope (области)
+            node_decremental = "grm",  -- Сужение выделения
           },
         },
       }
@@ -33,9 +33,9 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
       require "treesitter-context".setup {
-        enable = true,           -- Включение плагина
-        max_lines = 3,           -- Максимальное количество строк для отображения
-        mode = "cursor",         -- Режим отображения (по курсору)
+        enable = true,   -- Включение плагина
+        max_lines = 3,   -- Максимальное количество строк для отображения
+        mode = "cursor", -- Режим отображения (по курсору)
       }
     end,
   },
