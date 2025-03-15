@@ -1,4 +1,5 @@
-require("config.lazy")
-require("config.remap")
-require("config.filetypes")
-require("config.opt")
+require "config.filetypes"
+require "config.lazy"
+require "config.opt"
+require "config.remap"
+require "config.diagnostic"
