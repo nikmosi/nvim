@@ -5,14 +5,15 @@ return {
     build = ":TSUpdate",
     config = function()
       require "nvim-treesitter.configs".setup {
-        ensure_installed = { "c", "python" },
+        ensure_installed = { "c", "python", "git_rebase" },
         sync_install = false,
         auto_install = true,
-        ignore_install = { "gitcommit", "git_rebase" },
+        ignore_install = { "gitcommit", },
         modules = {},
         highlight = {
           enable = true,
-          disable = { "gitcommit", "git_rebase" },
+          disable = { "git_rebase" },
+          additional_vim_regex_highlighting = { "gitcommit" },
         },
         -- Включение выделения scope текущей функции
         incremental_selection = {
