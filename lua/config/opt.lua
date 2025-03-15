@@ -3,6 +3,7 @@ vim.opt.swapfile = false
 
 -- Включение номеров строк
 vim.opt.number = true
+vim.o.scl = "yes"
 
 -- Включение относительных номеров строк (опционально)
 vim.opt.relativenumber = true
