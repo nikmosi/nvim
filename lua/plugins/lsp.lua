@@ -78,6 +78,16 @@ return {
           end, { noremap = true, silent = true })
           vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = true } end, opts)
           vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+
+          -- 🟩 Format on Save Integration
+          if vim.lsp.buf.format then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = event.buf,
+              callback = function()
+                vim.lsp.buf.format { async = false }
+              end,
+            })
+          end
         end,
       })
     end,
