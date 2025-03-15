@@ -26,9 +26,9 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Настройка ширины табуляции
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.tabstop = 2       -- 1 tab = 2 spaces
+vim.opt.shiftwidth = 2    -- Indent using 2 spaces
+vim.opt.expandtab = true  -- Use spaces instead of tabs
 
 -- Включение мыши во всех режимах
 vim.opt.mouse = 'a'
