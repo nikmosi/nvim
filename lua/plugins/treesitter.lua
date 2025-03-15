@@ -12,6 +12,7 @@ return {
         modules = {},
         highlight = {
           enable = true,
+          disable = { "gitcommit" },
         },
         -- Включение выделения scope текущей функции
         incremental_selection = {
