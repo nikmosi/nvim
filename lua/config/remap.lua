@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>bc", function()
   local current_buf = vim.api.nvim_get_current_buf()
   local bufs = vim.api.nvim_list_bufs()
