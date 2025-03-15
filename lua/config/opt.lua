@@ -1,4 +1,3 @@
-vim.opt.termguicolors = true
 -- Отключение swap-файлов
 vim.opt.swapfile = false
 
