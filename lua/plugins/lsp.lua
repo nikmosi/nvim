@@ -46,6 +46,16 @@ return {
       require "lspconfig".pyright.setup {}
       require "lspconfig".pylsp.setup {}
       require "lspconfig".ruff.setup {}
+      require "lspconfig".yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+              ["../path/relative/to/file.yml"] = "/.github/workflows/*",
+              ["/path/from/root/of/project"] = "/.github/workflows/*",
+            },
+          },
+        } }
       -- Autocommand for LSP actions
       vim.api.nvim_create_autocmd("LspAttach", {
         desc = "LSP actions",
