@@ -3,9 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
-      -- Reserve space in the gutter
-      vim.opt.signcolumn = "yes"
-
       -- Add cmp_nvim_lsp capabilities settings to lspconfig
       local lspconfig_defaults = require "lspconfig".util.default_config
       lspconfig_defaults.capabilities = vim.tbl_deep_extend(
