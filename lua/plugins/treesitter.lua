@@ -8,11 +8,11 @@ return {
         ensure_installed = { "c", "python" },
         sync_install = false,
         auto_install = true,
-        ignore_install = { "gitcommit" },
+        ignore_install = { "gitcommit", "git_rebase" },
         modules = {},
         highlight = {
           enable = true,
-          disable = { "gitcommit" },
+          disable = { "gitcommit", "git_rebase" },
         },
         -- Включение выделения scope текущей функции
         incremental_selection = {
