@@ -51,7 +51,7 @@ return {
           analysis = {
             autoSearchPaths = true,        -- Automatically search for modules
             diagnosticMode = "workspace",  -- Set to workspace to analyze all files
-            typeCheckingMode = "off",      -- Disable strict type checking (can be set to 'basic' or 'strict')
+            typeCheckingMode = "strict",   -- Disable strict type checking (can be set to 'basic' or 'strict')
             useLibraryCodeForTypes = true, -- Use library code for type inference
             completeFunctionParens = true, -- Auto-complete function parentheses
           },
