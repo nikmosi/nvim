@@ -43,7 +43,26 @@ return {
           }
         }
       }
-      require "lspconfig".pyright.setup {}
+      require "lspconfig".pyright.setup {
+        settings = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,        -- Automatically search for modules
+              diagnosticMode = "workspace",  -- Set to workspace to analyze all files
+              typeCheckingMode = "off",      -- Disable strict type checking (can be set to 'basic' or 'strict')
+              useLibraryCodeForTypes = true, -- Use library code for type inference
+              completeFunctionParens = true, -- Auto-complete function parentheses
+            },
+          },
+        },
+        on_new_config = function(new_config, new_root_dir)
+          local py = require "lang.python"
+          py.env(new_root_dir)
+          new_config.settings.python.pythonPath = vim.fn.exepath "python"
+          -- new_config.cmd_env.PATH = py.env(new_root_dir) .. new_config.cmd_env.PATH
+          vim.notify(vim.inspect(py.pep582(new_root_dir)))
+        end,
+      }
       require "lspconfig".pylsp.setup {}
       require "lspconfig".ruff.setup {}
       require "lspconfig".yamlls.setup {
@@ -71,10 +90,7 @@ return {
           vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ld", function()
-            vim.diagnostic.open_float(nil, {
-              focusable = true,
-              scope = "cursor",
-            })
+            vim.diagnostic.open_float()
           end, { noremap = true, silent = true })
           vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = true } end, opts)
           vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
