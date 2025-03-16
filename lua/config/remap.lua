@@ -17,3 +17,6 @@ vim.keymap.set("n", "<leader>C", vim.cmd.bdelete, { noremap = true, silent = tru
 
 -- lsp
 vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart, { noremap = true, silent = true })
+
+-- neotree
+vim.keymap.set("n", "<leader>e", function() vim.cmd.Neotree "toggle" end)

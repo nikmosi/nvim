@@ -33,12 +33,10 @@ return {
   -- Treesitter Context для отображения области функции вверху экрана
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require "treesitter-context".setup {
-        enable = true,   -- Включение плагина
-        max_lines = 3,   -- Максимальное количество строк для отображения
-        mode = "cursor", -- Режим отображения (по курсору)
-      }
-    end,
+    opts = {
+      enable = true,   -- Включение плагина
+      max_lines = 2,   -- Максимальное количество строк для отображения
+      mode = "cursor", -- Режим отображения (по курсору)
+    }
   },
 }
