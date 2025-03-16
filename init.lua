@@ -5,3 +5,5 @@ require "config.filetypes"
 require "config.lazy"
 require "config.remap"
 require "config.diagnostic"
+
+vim.cmd.colorscheme "tokyonight-night"
