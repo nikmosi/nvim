@@ -9,7 +9,6 @@ vim.keymap.set("n", "<leader>bc", function()
     end
   end
 end, { noremap = true, silent = true })
-vim.keymap.set("i", "jk", "<Esc>")
 
 -- Move between buffers using keys
 vim.keymap.set("n", "L", vim.cmd.bnext, { noremap = true, silent = true })           -- Next buffer
