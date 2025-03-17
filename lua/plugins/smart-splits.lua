@@ -1,5 +1,6 @@
 return {
   "mrjones2014/smart-splits.nvim",
+  event = "VeryLazy",
   opts = {
     -- Ignored buffer types (only while resizing)
     ignored_buftypes = {

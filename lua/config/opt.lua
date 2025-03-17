@@ -1,3 +1,4 @@
+vim.opt.shortmess:append("I")
 -- Отключение swap-файлов
 vim.opt.swapfile = false
 

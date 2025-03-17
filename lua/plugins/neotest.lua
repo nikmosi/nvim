@@ -6,6 +6,7 @@ vim.api.nvim_set_keymap("n", "<leader>ts", ':lua require("neotest").summary.togg
 
 return {
   "nvim-neotest/neotest",
+  event = "VeryLazy",
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",

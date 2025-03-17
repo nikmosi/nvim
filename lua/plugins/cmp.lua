@@ -1,5 +1,4 @@
 return {
-  { "onsails/lspkind.nvim" },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -52,8 +51,8 @@ return {
         sources = cmp.config.sources {
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For snippets
-          { name = "buffer" }, -- Text within buffer
-          { name = "path" }, -- File system paths
+          { name = "buffer" },  -- Text within buffer
+          { name = "path" },    -- File system paths
         },
 
         experimental = {

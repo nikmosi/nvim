@@ -33,6 +33,7 @@ return {
   -- Treesitter Context для отображения области функции вверху экрана
   {
     "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
     opts = {
       enable = true,   -- Включение плагина
       max_lines = 2,   -- Максимальное количество строк для отображения

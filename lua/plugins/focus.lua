@@ -1,5 +1,6 @@
 return {
   "nvim-focus/focus.nvim",
+  event = "VeryLazy",
   version = false,
   opts = {
     enable = true,    -- Enable module
