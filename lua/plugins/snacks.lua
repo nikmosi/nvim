@@ -30,6 +30,13 @@ return {
         },
         { section = "startup" },
       },
+
+    },
+    ---@class snacks.explorer.Config
+    explorer = {
+      enabled = true,
+      replace_netrw = false,
+    },
     indent = {
       enabled = true,
       animate = {
