@@ -3,6 +3,7 @@ return {
     "lukas-reineke/lsp-format.nvim"
   }, {
   "neovim/nvim-lspconfig",
+  lazy = false,
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
   keys = {
     { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true },
@@ -108,7 +109,7 @@ return {
         vim.keymap.set("n", "<leader>ld", function()
           vim.diagnostic.open_float()
         end, { noremap = true, silent = true })
-        vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = true } end, opts)
+        vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = false } end, opts)
         vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
       end,
     })
