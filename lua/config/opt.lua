@@ -1,4 +1,7 @@
-vim.opt.shortmess:append("I")
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.shortmess:append "I"
 -- Отключение swap-файлов
 vim.opt.swapfile = false
 
@@ -10,7 +13,7 @@ vim.o.scl = "yes"
 vim.opt.relativenumber = true
 
 -- Включение подсветки синтаксиса
-vim.cmd('syntax on')
+vim.cmd "syntax on"
 
 -- Включение автоматического отступа
 vim.opt.autoindent = true
@@ -25,15 +28,15 @@ vim.opt.hlsearch = true
 
 -- Включение отображения табов и пробелов
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Настройка ширины табуляции
-vim.opt.tabstop = 2       -- 1 tab = 2 spaces
-vim.opt.shiftwidth = 2    -- Indent using 2 spaces
-vim.opt.expandtab = true  -- Use spaces instead of tabs
+vim.opt.tabstop = 2      -- 1 tab = 2 spaces
+vim.opt.shiftwidth = 2   -- Indent using 2 spaces
+vim.opt.expandtab = true -- Use spaces instead of tabs
 
 -- Включение мыши во всех режимах
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Включение переноса строк
 vim.opt.wrap = true
@@ -57,22 +60,10 @@ vim.opt.cursorcolumn = false
 vim.opt.wildmenu = true
 
 -- Включение отображения подсказок при наборе команд
-vim.opt.wildmode = 'longest:full,full'
+vim.opt.wildmode = "longest:full,full"
 
 -- Включение отображения подсказок при наборе команд
-vim.opt.wildignore = '*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store'
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildignorecase = true
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildcharm = 26
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildoptions = 'pum'
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildignore = '*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store'
+vim.opt.wildignore = "*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store"
 
 -- Включение отображения подсказок при наборе команд
 vim.opt.wildignorecase = true
@@ -81,22 +72,10 @@ vim.opt.wildignorecase = true
 vim.opt.wildcharm = 26
 
 -- Включение отображения подсказок при наборе команд
-vim.opt.wildoptions = 'pum'
+vim.opt.wildoptions = "pum"
 
 -- Включение отображения подсказок при наборе команд
-vim.opt.wildignore = '*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store'
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildignorecase = true
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildcharm = 26
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildoptions = 'pum'
-
--- Включение отображения подсказок при наборе команд
-vim.opt.wildignore = '*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store'
+vim.opt.wildignore = "*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store"
 
 -- Включение отображения подсказок при наборе команд
 vim.opt.wildignorecase = true
@@ -105,4 +84,28 @@ vim.opt.wildignorecase = true
 vim.opt.wildcharm = 26
 
 -- Включение отображения подсказок при наборе команд
-vim.opt.wildoptions = 'pum'
+vim.opt.wildoptions = "pum"
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildignore = "*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store"
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildignorecase = true
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildcharm = 26
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildoptions = "pum"
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildignore = "*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store"
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildignorecase = true
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildcharm = 26
+
+-- Включение отображения подсказок при наборе команд
+vim.opt.wildoptions = "pum"
