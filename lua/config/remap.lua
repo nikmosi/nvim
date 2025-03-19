@@ -14,9 +14,3 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "L", vim.cmd.bnext, { noremap = true, silent = true })           -- Next buffer
 vim.keymap.set("n", "H", vim.cmd.bprev, { noremap = true, silent = true })           -- Previous buffer
 vim.keymap.set("n", "<leader>C", vim.cmd.bdelete, { noremap = true, silent = true }) -- Delete current buffer
-
--- lsp
-vim.keymap.set("n", "<leader>lsr", vim.cmd.LspRestart, { noremap = true, silent = true })
-
--- neotree
-vim.keymap.set("n", "<leader>e", function() vim.cmd.Neotree "toggle" end)

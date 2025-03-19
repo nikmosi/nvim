@@ -4,6 +4,9 @@ return {
   }, {
   "neovim/nvim-lspconfig",
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  keys = {
+    { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true },
+  },
   config = function()
     -- Add cmp_nvim_lsp capabilities settings to lspconfig
     local lspconfig_defaults = require "lspconfig".util.default_config
