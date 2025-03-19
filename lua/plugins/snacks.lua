@@ -54,7 +54,18 @@ return {
       timeout = 3000,
     },
     scope = { enabled = true },
-    scroll = { enabled = true },
+    scroll = {
+      enabled = true,
+      animate = {
+        duration = { step = 10, total = 200 },
+        animate_repeat = {
+          delay = 100,
+          duration = { step = 5, total = 50 },
+          easing = "linear",
+        },
+        easing = "linear",
+      },
+    },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     picker = {
