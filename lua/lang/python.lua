@@ -36,7 +36,7 @@ end
 M.env = function(root_dir)
   if not vim.env.VIRTUAL_ENV or vim.env.VIRTUAL_ENV == "" then
     _virtual_env = get_python_dir(root_dir)
-    vim.notify("python_dir: " .. _virtual_env)
+    vim.notify("using venv: " .. _virtual_env)
   end
 
   if _virtual_env ~= "" then
