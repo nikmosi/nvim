@@ -1,6 +1,6 @@
 return {
-  { "folke/tokyonight.nvim", priority = 1000, },
-  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
-  { "rose-pine/neovim",      name = "rose-pine", },
-  { "EdenEast/nightfox.nvim" },
+  { "folke/tokyonight.nvim",  name = "tokyonight", lazy = true, event = "VimEnter" },
+  { "catppuccin/nvim",        name = "catppuccin", lazy = true, event = "VimEnter" },
+  { "rose-pine/neovim",       name = "rose-pine",  lazy = true, event = "VimEnter" },
+  { "EdenEast/nightfox.nvim", name = "nightfox",   lazy = true, event = "VimEnter" },
 }
