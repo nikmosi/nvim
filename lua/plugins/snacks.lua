@@ -92,6 +92,7 @@ return {
     -- find
     { "<leader>fw", function() Snacks.picker.grep() end,                                  desc = "Grep" },
     { "<leader>fb", function() Snacks.picker.buffers() end,                               desc = "Buffers" },
+    { "/",          function() Snacks.picker.lines() end,                                 desc = "Buffer Lines" },
     ---@diagnostic disable-next-line:assign-type-mismatch
     { "<leader>fc", function() Snacks.picker.files { cwd = vim.fn.stdpath "config" } end, desc = "Find Config File" },
     { "<leader>ff", function() Snacks.picker.files() end,                                 desc = "Find Files" },
