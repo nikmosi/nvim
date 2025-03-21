@@ -104,9 +104,31 @@ return {
             vim.diagnostic.open_float()
           end, { noremap = true, silent = true })
           vim.keymap.set({ "n", "x" }, "<F3>", function()
-            vim.lsp.buf.format { async = false }
+            vim.lsp.buf.format { async = true }
           end, opts)
           vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+        end,
+      })
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = "*.lua",
+        callback = function()
+          local bufnr = vim.api.nvim_get_current_buf()
+          local clients = vim.lsp.get_clients { bufnr = bufnr }
+          local formatted = false
+
+          for _, client in ipairs(clients) do
+            if client.name == "lua_ls" then
+              vim.system({ "stylua", "%", vim.api.nvim_buf_get_name(bufnr) }, nil, function()
+                vim.schedule(function()
+                  vim.cmd "edit"
+                end)
+              end)
+              formatted = true
+            end
+          end
+          if not formatted then
+            vim.buf.lsp.format { async = true }
+          end
         end,
       })
     end,
