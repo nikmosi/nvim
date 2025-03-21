@@ -40,6 +40,7 @@ return {
 
     require "lspconfig".docker_compose_language_service.setup { filetypes = { "compose.yml" } }
     require "lspconfig".dockerls.setup {}
+    require "lspconfig".nginx_language_server.setup {}
     require "lspconfig".nil_ls.setup {
       settings = {
         ["nil"] = {
