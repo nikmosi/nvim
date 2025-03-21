@@ -1,6 +1,6 @@
 local M = {}
 
-local path = require "lspconfig.util".path
+local path = require("lspconfig.util").path
 
 local function get_python_dir(root_dir)
   -- Ищем .venv в корне проекта

@@ -1,6 +1,6 @@
 vim.diagnostic.config {
   signs = true,
-  virtual_text = true,           -- Отключить текст диагностики в самом коде
+  virtual_text = true, -- Отключить текст диагностики в самом коде
   float = { border = "rounded" }, -- Окно всплывающей подсказки с границей
   underline = true,
   update_in_insert = false,

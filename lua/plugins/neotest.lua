@@ -1,8 +1,16 @@
-vim.api.nvim_set_keymap("n", "<leader>tn", ':lua require("neotest").run.run()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tf", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ts", ':lua require("neotest").summary.toggle()<CR>',
-  { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tn", ":lua require(\"neotest\").run.run()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>tf",
+  ":lua require(\"neotest\").run.run(vim.fn.expand(\"%\"))<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ts",
+  ":lua require(\"neotest\").summary.toggle()<CR>",
+  { noremap = true, silent = true }
+)
 
 return {
   "nvim-neotest/neotest",
@@ -15,7 +23,7 @@ return {
     "nvim-neotest/neotest-python",
   },
   config = function()
-    require "neotest".setup {
+    require("neotest").setup {
       adapters = {
         require "neotest-python" {
           args = { "--verbose" },
@@ -23,5 +31,5 @@ return {
         },
       },
     }
-  end
+  end,
 }

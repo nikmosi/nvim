@@ -6,7 +6,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",         -- Snippet engine
+      "L3MON4D3/LuaSnip", -- Snippet engine
       "saadparwaiz1/cmp_luasnip", -- Snippet completions
     },
     config = function()
@@ -51,32 +51,32 @@ return {
         sources = cmp.config.sources {
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For snippets
-          { name = "buffer" },  -- Text within buffer
-          { name = "path" },    -- File system paths
+          { name = "buffer" }, -- Text within buffer
+          { name = "path" }, -- File system paths
         },
 
         experimental = {
           ghost_text = true, -- Preview text for suggestions
-        }
+        },
       }
 
       -- `/` cmdline setup
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = "buffer" }
-        }
+          { name = "buffer" },
+        },
       })
 
       -- `:` cmdline setup
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = "path" }
+          { name = "path" },
         }, {
-          { name = "cmdline" }
-        })
+          { name = "cmdline" },
+        }),
       })
-    end
-  }
+    end,
+  },
 }

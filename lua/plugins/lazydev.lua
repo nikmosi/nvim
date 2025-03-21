@@ -11,7 +11,7 @@ return {
       -- always load the LazyVim library
       "LazyVim",
       -- Only load the lazyvim library when the `LazyVim` global is found
-      { path = "LazyVim",            words = { "LazyVim" } },
+      { path = "LazyVim", words = { "LazyVim" } },
     },
     -- always enable unless `vim.g.lazydev_enabled = false`
     -- This is the default

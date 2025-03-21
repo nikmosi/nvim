@@ -3,6 +3,6 @@ return {
   event = "BufRead",
   opts = {
     signcolumn = true, -- Убираем знаки слева
-    numhl = false,     -- Включаем подсветку номеров строк
-  }
+    numhl = false, -- Включаем подсветку номеров строк
+  },
 }

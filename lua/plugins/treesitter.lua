@@ -5,7 +5,7 @@ return {
     build = ":TSUpdate",
     event = "BufRead",
     config = function()
-      require "nvim-treesitter.configs".setup {
+      require("nvim-treesitter.configs").setup {
         ensure_installed = { "c", "python", "git_rebase", "gitcommit" },
         sync_install = false,
         auto_install = true,
@@ -20,10 +20,10 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn",    -- Начало выделения
-            node_incremental = "grn",  -- Расширение выделения
+            init_selection = "gnn", -- Начало выделения
+            node_incremental = "grn", -- Расширение выделения
             scope_incremental = "grc", -- Выделение scope (области)
-            node_decremental = "grm",  -- Сужение выделения
+            node_decremental = "grm", -- Сужение выделения
           },
         },
       }
@@ -36,9 +36,9 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
     opts = {
-      enable = true,   -- Включение плагина
-      max_lines = 2,   -- Максимальное количество строк для отображения
+      enable = true, -- Включение плагина
+      max_lines = 2, -- Максимальное количество строк для отображения
       mode = "cursor", -- Режим отображения (по курсору)
-    }
+    },
   },
 }

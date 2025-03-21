@@ -8,6 +8,6 @@ return {
       updateevents = "TextChanged,TextChangedI",
     }
 
-    require "luasnip.loaders.from_vscode".lazy_load()
-  end
+    require("luasnip.loaders.from_vscode").lazy_load()
+  end,
 }
