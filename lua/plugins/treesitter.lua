@@ -6,15 +6,15 @@ return {
     event = "BufRead",
     config = function()
       require "nvim-treesitter.configs".setup {
-        ensure_installed = { "c", "python", "git_rebase" },
+        ensure_installed = { "c", "python", "git_rebase", "gitcommit" },
         sync_install = false,
         auto_install = true,
-        ignore_install = { "gitcommit", },
+        ignore_install = {},
         modules = {},
         highlight = {
           enable = true,
-          disable = { "git_rebase" },
-          additional_vim_regex_highlighting = { "gitcommit" },
+          disable = {},
+          additional_vim_regex_highlighting = { "gitcommit", "git_rebase" },
         },
         -- Включение выделения scope текущей функции
         incremental_selection = {
