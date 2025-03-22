@@ -9,72 +9,30 @@ return {
     keys = {
       { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true },
     },
-    config = function()
+    opts = {
+      servers = {
+        docker_compose_language_service = require "config.lsp.docker_compose_language_service",
+        dockerls = {},
+        lua_ls = require "config.lsp.lua_ls",
+        nginx_language_server = {},
+        nil_ls = require "config.lsp.nil_ls",
+        pylsp = {},
+        pyright = require "config.lsp.pyright",
+        ruff = {},
+        yamlls = require "config.lsp.yamlls",
+      },
+    },
+    config = function(_, opts)
+      local lspconfig = require "lspconfig"
       -- Add cmp_nvim_lsp capabilities settings to lspconfig
-      local lspconfig_defaults = require("lspconfig").util.default_config
+      local lspconfig_defaults = lspconfig.util.default_config
       lspconfig_defaults.capabilities =
         vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
-      require("lspconfig").lua_ls.setup {
-        settings = {
-          Lua = {
-            format = {
-              enable = false, -- Enable Lua formatting
-            },
-            diagnostics = {
-              globals = { "vim" }, -- Treat 'vim' as a global (for Neovim API)
-            },
-            workspace = {
-              checkThirdParty = false, -- Disable third-party library checks
-            },
-          },
-        },
-      }
 
-      require("lspconfig").docker_compose_language_service.setup { filetypes = { "compose.yml" } }
-      require("lspconfig").dockerls.setup {}
-      require("lspconfig").nginx_language_server.setup {}
-      require("lspconfig").nil_ls.setup {
-        settings = {
-          ["nil"] = {
-            formatting = {
-              command = { "nixfmt" },
-            },
-          },
-        },
-      }
-      require("lspconfig").pyright.setup {
-        settings = {
-          python = {
-            analysis = {
-              autoSearchPaths = true, -- Automatically search for modules
-              diagnosticMode = "workspace", -- Set to workspace to analyze all files
-              typeCheckingMode = "strict", -- Disable strict type checking (can be set to 'basic' or 'strict')
-              useLibraryCodeForTypes = true, -- Use library code for type inference
-              completeFunctionParens = true, -- Auto-complete function parentheses
-            },
-          },
-        },
-        on_new_config = function(new_config, new_root_dir)
-          local py = require "lang.python"
-          py.env(new_root_dir)
-          new_config.settings.python.pythonPath = vim.fn.exepath "python"
-          -- new_config.cmd_env.PATH = py.env(new_root_dir) .. new_config.cmd_env.PATH
-          vim.notify(vim.inspect(py.pep582(new_root_dir)))
-        end,
-      }
-      require("lspconfig").pylsp.setup {}
-      require("lspconfig").ruff.setup {}
-      require("lspconfig").yamlls.setup {
-        settings = {
-          yaml = {
-            schemas = {
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-              ["/path/from/root/of/project"] = "/.github/workflows/*",
-            },
-          },
-        },
-      }
+      for server, config in pairs(opts.servers) do
+        lspconfig[server].setup(config)
+      end
+
       vim.api.nvim_create_autocmd("LspAttach", {
         desc = "Auto format",
         callback = function(event)
@@ -100,12 +58,13 @@ return {
           -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
-          vim.keymap.set("n", "<leader>ld", function()
-            vim.diagnostic.open_float()
-          end, { noremap = true, silent = true })
-          vim.keymap.set({ "n", "x" }, "<F3>", function()
-            vim.lsp.buf.format { async = true }
-          end, opts)
+          vim.keymap.set(
+            "n",
+            "<leader>ld",
+            function() vim.diagnostic.open_float() end,
+            { noremap = true, silent = true }
+          )
+          vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = true } end, opts)
           vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
         end,
       })
@@ -119,9 +78,7 @@ return {
           for _, client in ipairs(clients) do
             if client.name == "lua_ls" then
               vim.system({ "stylua", "%", vim.api.nvim_buf_get_name(bufnr) }, nil, function()
-                vim.schedule(function()
-                  vim.cmd "edit"
-                end)
+                vim.schedule(function() vim.cmd "edit" end)
               end)
               formatted = true
             end
