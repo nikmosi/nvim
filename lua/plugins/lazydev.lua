@@ -5,6 +5,7 @@ return {
     library = {
       "lazy.nvim",
       "snacks.nvim",
+      "blink.cmp",
       -- It can also be a table with trigger words / mods
       -- Only load luvit types when the `vim.uv` word is found
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },

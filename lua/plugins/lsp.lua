@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   lazy = false,
-  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  dependencies = { "saghen/blink.cmp" },
   keys = {
     { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true },
   },
@@ -22,8 +22,11 @@ return {
     local lspconfig = require "lspconfig"
     -- Add cmp_nvim_lsp capabilities settings to lspconfig
     local lspconfig_defaults = lspconfig.util.default_config
-    lspconfig_defaults.capabilities =
-      vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+      "force",
+      lspconfig_defaults.capabilities,
+      require("blink.cmp").get_lsp_capabilities({}, false)
+    )
 
     for server, config in pairs(opts.servers) do
       lspconfig[server].setup(config)
