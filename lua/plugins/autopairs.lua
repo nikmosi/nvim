@@ -1,5 +1,1 @@
-return {
-  "windwp/nvim-autopairs",
-  event = "InsertEnter",
-  opts = {},
-}
+return { "echasnovski/mini.pairs", event = "InsertEnter", version = "*" }
