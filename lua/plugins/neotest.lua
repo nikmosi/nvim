@@ -1,6 +1,6 @@
 return {
   "nvim-neotest/neotest",
-  event = "VeryLazy",
+  ft = { "python" },
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
