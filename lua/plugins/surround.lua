@@ -1,1 +1,1 @@
-return { "echasnovski/mini.surround", event = "VeryLazy", version = "*" }
+return { "echasnovski/mini.surround", event = "VeryLazy", version = "*", opts = {} }
