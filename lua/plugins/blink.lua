@@ -1,16 +1,9 @@
 return {
   "saghen/blink.cmp",
   event = "BufRead",
-  -- optional: provides snippets for the snippet source
   dependencies = { "rafamadriz/friendly-snippets", "echasnovski/mini.icons" },
 
-  -- use a release tag to download pre-built binaries
   version = "*",
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
-
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
@@ -29,29 +22,45 @@ return {
     keymap = { preset = "super-tab" },
 
     appearance = {
-      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = "mono",
     },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
+
+      providers = {
+        lsp = {
+          name = "LSP",
+          module = "blink.cmp.sources.lsp",
+          opts = {}, -- Passed to the source directly, varies by source
+
+          --- NOTE: All of these options may be functions to get dynamic behavior
+          --- See the type definitions for more information
+          enabled = true, -- Whether or not to enable the provider
+          async = false, -- Whether we should wait for the provider to return before showing the completions
+          timeout_ms = 2000, -- How long to wait for the provider to return before showing completions and treating it as asynchronous
+          transform_items = nil, -- Function to transform the items before they're returned
+          should_show_items = true, -- Whether or not to show the items
+          max_items = nil, -- Maximum number of items to display in the menu
+          min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
+          -- If this provider returns 0 items, it will fallback to these providers.
+          -- If multiple providers fallback to the same provider, all of the providers must return 0 items for it to fallback
+          fallbacks = {},
+          score_offset = -7, -- Boost/penalize the score of the items
+          override = nil, -- Override the source's functions
+        },
+      },
     },
 
-    -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-    -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-    -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-    --
-    -- See the fuzzy documentation for more information
     fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = { window = { border = "single" } },
     completion = {
-      documentation = { window = { border = "single" } },
+      documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = "single" } },
+      ghost_text = { enabled = true },
       menu = {
         border = "single",
         draw = {
+          treesitter = { "lsp" },
           components = {
             kind_icon = {
               ellipsis = false,
@@ -59,7 +68,6 @@ return {
                 local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
                 return kind_icon
               end,
-              -- Optionally, you may also use the highlights from mini.icons
               highlight = function(ctx)
                 local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                 return hl
