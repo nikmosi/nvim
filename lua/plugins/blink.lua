@@ -53,7 +53,7 @@ return {
     },
 
     fuzzy = { implementation = "prefer_rust_with_warning" },
-    signature = { window = { border = "single" } },
+    signature = { enabled = true, window = { border = "single" } },
     completion = {
       documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = "single" } },
       ghost_text = { enabled = true },
