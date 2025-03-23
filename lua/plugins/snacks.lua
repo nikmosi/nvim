@@ -6,6 +6,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     animate = { fls = 165 },
+    bufdelete = { enabled = true },
     gitbrowse = { enabled = true },
     dashboard = {
       enabled = true,
@@ -153,6 +154,9 @@ return {
     { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore" },
     { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+
+    { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Close all buffers except the current one" },
+    { "<leader>bc", function() Snacks.bufdelete.delete() end, desc = "Close current buffer", mode = { "n" } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
