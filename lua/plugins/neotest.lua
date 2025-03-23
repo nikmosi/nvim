@@ -1,17 +1,3 @@
-vim.api.nvim_set_keymap("n", "<leader>tn", ":lua require(\"neotest\").run.run()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>tf",
-  ":lua require(\"neotest\").run.run(vim.fn.expand(\"%\"))<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ts",
-  ":lua require(\"neotest\").summary.toggle()<CR>",
-  { noremap = true, silent = true }
-)
-
 return {
   "nvim-neotest/neotest",
   event = "VeryLazy",
@@ -22,8 +8,17 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/neotest-python",
   },
+  keys = {
+    { "<leader>tn", function() require("neotest").run.run() end, desc = "Run tests" },
+    {
+      "<leader>tf",
+      function() require("neotest").run.run(vim.fn.expand "%") end,
+      desc = "Run tests for current file",
+    },
+    { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
+  },
   config = function()
-    require("neotest").setup {
+    require "neotest" {
       adapters = {
         require "neotest-python" {
           args = { "--verbose" },
