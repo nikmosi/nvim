@@ -18,7 +18,7 @@ return {
     { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
   },
   config = function()
-    require "neotest" {
+    require("neotest").setup {
       adapters = {
         require "neotest-python" {
           args = { "--verbose" },
