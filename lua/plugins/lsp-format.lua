@@ -24,7 +24,9 @@ return {
         for _, client in ipairs(clients) do
           if client.name == "lua_ls" then
             vim.system({ "stylua", "%", vim.api.nvim_buf_get_name(bufnr) }, nil, function()
-              vim.schedule(function() vim.cmd "edit" end)
+              vim.schedule(function()
+                pcall(function() vim.cmd "edit" end)
+              end)
             end)
             formatted = true
           end
