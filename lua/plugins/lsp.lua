@@ -3,7 +3,7 @@ return {
   lazy = false,
   dependencies = { "saghen/blink.cmp" },
   keys = {
-    { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true },
+    { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true, desc = "Restart lsp" },
   },
   opts = {
     servers = {
