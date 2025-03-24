@@ -16,7 +16,7 @@ return {
       pyright = require "config.lsp.pyright",
       ruff = {},
       yamlls = require "config.lsp.yamlls",
-      harper_ls = {},
+      harper_ls = require "config.lsp.harper_ls",
     },
   },
   config = function(_, opts)
