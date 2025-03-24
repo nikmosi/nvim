@@ -23,9 +23,12 @@ return {
 
         for _, client in ipairs(clients) do
           if client.name == "lua_ls" then
+            local win_id = vim.api.nvim_get_current_win()
             vim.system({ "stylua", "%", vim.api.nvim_buf_get_name(bufnr) }, nil, function()
               vim.schedule(function()
-                pcall(function() vim.cmd "edit" end)
+                if vim.api.nvim_win_is_valid(win_id) then
+                  vim.cmd "edit"
+                end
               end)
             end)
             formatted = true
