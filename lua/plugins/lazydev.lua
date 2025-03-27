@@ -8,6 +8,7 @@ return {
       "blink.cmp",
       "conform",
       "MiniIcons",
+      "nvim-dap-ui",
       -- It can also be a table with trigger words / mods
       -- Only load luvit types when the `vim.uv` word is found
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
