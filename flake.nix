@@ -27,6 +27,7 @@
             check-yaml.enable = true;
             fix-byte-order-marker.enable = true;
             stylua.enable = true;
+            convco.enable = true;
             trufflehog = {
               enable = true;
               stages = [ "pre-push" ];
