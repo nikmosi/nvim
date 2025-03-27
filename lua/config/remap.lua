@@ -15,4 +15,4 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<A-j>", "V:m '>+1<CR>gv=gv<Esc>")
 vim.keymap.set("n", "<A-k>", "V:m '<-2<CR>gv=gv<Esc>")
 
-vim.keymap.set("n", "<CR>", [[{-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]], { silent = true, expr = true })
+vim.keymap.set("n", "q:", ":q<CR>", { noremap = true, silent = true })
