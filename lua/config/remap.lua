@@ -6,7 +6,7 @@ vim.keymap.set("n", "H", vim.cmd.bprev, { noremap = true, silent = true, desc = 
 vim.keymap.set("x", "<leader>p", "\"_dP", { noremap = true, silent = true, desc = "Delete to void" })
 vim.keymap.set("n", "<leader>v", "\"+p", { noremap = true, silent = true, desc = "Paste from system clip" })
 vim.keymap.set({ "n", "v" }, "<C-V>", "\"+p", { noremap = true, silent = true, desc = "Paste from system clip" })
-vim.keymap.set("i", "<C-V>", "<esc>\"+pa", { noremap = true, silent = true, desc = "Paste from system clip" })
+vim.keymap.set({ "i", "v" }, "<C-V>", "<esc>\"+pa", { noremap = true, silent = true, desc = "Paste from system clip" })
 vim.keymap.set("n", "<leader>V", "\"+p", { noremap = true, silent = true, desc = "Paste from system clip" })
 
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
