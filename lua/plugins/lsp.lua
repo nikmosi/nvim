@@ -9,14 +9,15 @@ return {
     servers = {
       docker_compose_language_service = require "config.lsp.docker_compose_language_service",
       dockerls = {},
+      harper_ls = require "config.lsp.harper_ls",
       lua_ls = require "config.lsp.lua_ls",
       nginx_language_server = {},
       nil_ls = require "config.lsp.nil_ls",
+      nixd = require "config.lsp.nixd",
       pylsp = {},
       pyright = require "config.lsp.pyright",
       ruff = {},
       yamlls = require "config.lsp.yamlls",
-      harper_ls = require "config.lsp.harper_ls",
     },
   },
   config = function(_, opts)
