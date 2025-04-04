@@ -14,6 +14,7 @@ return {
       nginx_language_server = {},
       nil_ls = require "config.lsp.nil_ls",
       nixd = require "config.lsp.nixd",
+      nushell = {},
       pylsp = {},
       pyright = require "config.lsp.pyright",
       ruff = {},
