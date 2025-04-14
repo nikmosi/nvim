@@ -58,6 +58,5 @@ return {
   },
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "gelguy/wilder.nvim",
   },
 }
