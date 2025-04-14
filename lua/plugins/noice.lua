@@ -6,6 +6,7 @@ return {
       enabled = false,
     },
     lsp = {
+      enabled = false,
       progress = {
         enabled = false,
       },
