@@ -19,7 +19,7 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "buffer" },
 
       providers = {
         lazydev = {
