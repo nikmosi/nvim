@@ -1,14 +1,10 @@
 return {
-  "ojroques/nvim-osc52",
+  "nikmosi/dummy",
   event = "VeryLazy",
-  opt = { max_length = 0, trim = false, silent = true },
   keys = {
     {
       "<leader>c",
-      function()
-        vim.cmd "norm V"
-        require("osc52").copy_visual()
-      end,
+      "V\"+yy",
       mode = "n",
       desc = "Copy operator to clipboard",
     },
@@ -26,7 +22,7 @@ return {
     },
     {
       "<leader>c",
-      function() require("osc52").copy_visual() end,
+      "\"+y",
       mode = "v",
       desc = "Copy visual selection to clipboard",
     },
