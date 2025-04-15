@@ -1,19 +1,19 @@
 local colors = require("tokyonight.colors").setup()
 
 vim.diagnostic.config {
-  signs = true,
-  virtual_text = true, -- Отключить текст диагностики в самом коде
-  float = { border = "rounded" }, -- Окно всплывающей подсказки с границей
+  virtual_text = true,
+  float = { border = "rounded" },
   underline = true,
   update_in_insert = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅙",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "󰋼",
+      [vim.diagnostic.severity.HINT] = "󰌵",
+    },
+  },
 }
-
-local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
-
-for name, icon in pairs(symbols) do
-  local hl = "DiagnosticSign" .. name
-  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
 
 -- Настройка highlight групп для разных типов диагностики
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.red })
