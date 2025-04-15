@@ -25,7 +25,23 @@ return {
     styles = { notification = { wo = { wrap = true } } },
   },
   keys = {
-    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    {
+      "<leader>e",
+      function()
+        local explorer_pickers = Snacks.picker.get { source = "explorer" }
+        for _, v in pairs(explorer_pickers) do
+          if v:is_focused() then
+            v:close()
+          else
+            v:focus()
+          end
+        end
+        if #explorer_pickers == 0 then
+          Snacks.picker.explorer()
+        end
+      end,
+      desc = "File Explorer",
+    },
     -- find
     { "<leader>fw", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
