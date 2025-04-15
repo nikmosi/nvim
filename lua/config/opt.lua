@@ -1,6 +1,5 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.clipboard = "osc52"
 vim.opt.shortmess:append "I"
 vim.opt.swapfile = false
 vim.opt.number = true
