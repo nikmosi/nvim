@@ -11,3 +11,9 @@ vim.keymap.set("n", "<A-j>", "V:m '>+1<CR>gv=gv<Esc>")
 vim.keymap.set("n", "<A-k>", "V:m '<-2<CR>gv=gv<Esc>")
 
 vim.keymap.set("n", "q:", ":q<CR>", { noremap = true, silent = true })
+
+-- clips
+vim.keymap.set("n", "<leader>c", "\"+yy", { desc = "Copy operator to clipboard" })
+vim.keymap.set("n", "<leader>v", "\"+p", { desc = "paste operator to clipboard" })
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Delete to void" })
+vim.keymap.set("v", "<leader>c", "\"+y", { desc = "Copy visual selection to clipboard" })
