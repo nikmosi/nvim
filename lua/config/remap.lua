@@ -7,8 +7,8 @@ vim.keymap.set("n", "H", vim.cmd.bprev, { noremap = true, silent = true, desc = 
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<A-j>", "V:m '>+1<CR>gv=gv<Esc>")
-vim.keymap.set("n", "<A-k>", "V:m '<-2<CR>gv=gv<Esc>")
+vim.keymap.set("n", "<A-j>", "V:m '>+1<CR>gv=gv<Esc>", { silent = true, desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "V:m '<-2<CR>gv=gv<Esc>", { silent = true, desc = "Move line up" })
 
 vim.keymap.set("n", "q:", ":q<CR>", { noremap = true, silent = true })
 
