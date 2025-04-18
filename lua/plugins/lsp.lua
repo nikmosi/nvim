@@ -18,6 +18,7 @@ return {
       pylsp = {},
       pyright = require "config.lsp.pyright",
       ruff = {},
+      fish_lsp = {},
       yamlls = require "config.lsp.yamlls",
     },
   },
