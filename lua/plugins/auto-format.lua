@@ -8,6 +8,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
+        fish = { "fish_indent" },
         python = { "ruff_fix", "ruff_format", "ruff_organize_import" },
       },
       default_format_opts = {
