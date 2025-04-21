@@ -18,3 +18,6 @@ vim.keymap.set("n", "<leader>v", "\"+p", { desc = "paste operator from clipboard
 vim.keymap.set("v", "<leader>v", "\"+p", { desc = "paste operator from clipboard" })
 vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Delete to void" })
 vim.keymap.set("v", "<leader>c", "\"+y", { desc = "Copy visual selection to clipboard" })
+
+vim.keymap.set("n", "<leader>W", function() vim.cmd "noautocmd w" end, { desc = "Write without formatting" })
+vim.keymap.set("n", "<leader>w", function() vim.cmd "w" end, { desc = "Write formatting" })
