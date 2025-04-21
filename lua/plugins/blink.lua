@@ -19,7 +19,7 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "buffer" },
+      default = { "lsp", "path", "buffer", "snippetsc" },
 
       providers = {
         lazydev = {
@@ -28,7 +28,7 @@ return {
 
           score_offset = 100,
         },
-        lsp = {
+        snippetsc = {
           name = "SNIPPETS",
           module = "blink.cmp.sources.snippets",
           opts = {},
