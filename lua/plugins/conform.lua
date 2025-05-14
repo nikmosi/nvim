@@ -9,7 +9,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         fish = { "fish_indent" },
-        python = { "ruff_fix", "ruff_format", "ruff_organize_import" },
+        python = { "ruff_organize_imports", "ruff_format", "ruff_fix" },
         nginx = { "nginxfmt" },
       },
       default_format_opts = {
