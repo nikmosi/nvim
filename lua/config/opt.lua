@@ -29,3 +29,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildoptions = "pum"
 vim.opt.wrap = true
 vim.o.scl = "yes"
+
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.cindent = true
