@@ -15,6 +15,7 @@ return {
       nil_ls = require "config.lsp.nil_ls",
       nixd = require "config.lsp.nixd",
       nushell = {},
+      ty = {},
       pyright = require "config.lsp.pyright",
       ruff = {},
       yamlls = require "config.lsp.yamlls",
