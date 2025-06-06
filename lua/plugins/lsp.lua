@@ -9,7 +9,6 @@ return {
     servers = {
       docker_compose_language_service = require "config.lsp.docker_compose_language_service",
       dockerls = {},
-      harper_ls = require "config.lsp.harper_ls",
       lua_ls = require "config.lsp.lua_ls",
       nginx_language_server = {},
       nil_ls = require "config.lsp.nil_ls",
