@@ -42,7 +42,7 @@ return {
           min_keyword_length = 0,
 
           fallbacks = {},
-          score_offset = 10,
+          score_offset = 0,
           override = nil,
         },
 
