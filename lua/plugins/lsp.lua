@@ -1,5 +1,5 @@
 return {
-  "neovim/nvim-lspconfig",
+  dir = vim.fn.stdpath "config" .. "/lua/empty",
   lazy = false,
   dependencies = { "saghen/blink.cmp" },
   keys = {
@@ -7,31 +7,38 @@ return {
   },
   opts = {
     servers = {
-      docker_compose_language_service = require "config.lsp.docker_compose_language_service",
-      dockerls = {},
-      lua_ls = require "config.lsp.lua_ls",
-      nginx_language_server = {},
-      nil_ls = require "config.lsp.nil_ls",
-      nixd = require "config.lsp.nixd",
-      nushell = {},
-      ty = {},
-      pyright = require "config.lsp.pyright",
-      ruff = {},
-      yamlls = require "config.lsp.yamlls",
+      "docker_compose_language_service",
+      "dockerls",
+      "lua_ls",
+      "nginx_language_server",
+      "nil_ls",
+      "nixd",
+      "nushell",
+      "ty",
+      "pyright",
+      "ruff",
+      "yamlls",
     },
   },
   config = function(_, opts)
-    local lspconfig = require "lspconfig"
-    -- Add cmp_nvim_lsp capabilities settings to lspconfig
-    local lspconfig_defaults = lspconfig.util.default_config
-    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+    local capabilities = vim.tbl_deep_extend(
       "force",
-      lspconfig_defaults.capabilities,
+      vim.lsp.protocol.make_client_capabilities(),
       require("blink.cmp").get_lsp_capabilities({}, false)
     )
+    ---@diagnostic disable: missing-fields
+    capabilities.textDocument.semanticTokens = {
+      multilineTokenSupport = true,
+    }
+    ---@diagnostic enable: missing-fields
 
-    for server, config in pairs(opts.servers) do
-      lspconfig[server].setup(config)
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+      root_markers = { ".git" },
+    })
+
+    for _, server in pairs(opts.servers) do
+      vim.lsp.enable(server)
     end
 
     -- Autocommand for LSP actions

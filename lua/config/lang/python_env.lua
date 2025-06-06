@@ -1,7 +1,5 @@
 local M = {}
 
-local path = require("lspconfig.util").path
-
 local function get_python_dir(root_dir)
   -- Ищем .venv в корне проекта
   local venv_path = vim.fs.joinpath(root_dir, ".venv")
@@ -26,7 +24,7 @@ local function get_python_dir(root_dir)
   return nil
 end
 
-local function py_bin_dir(env) return path.join(env, "bin:") end
+local function py_bin_dir(env) return vim.fs.joinpath(env, "bin:") end
 
 M.env = function(root_dir)
   if vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV ~= "" then
