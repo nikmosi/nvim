@@ -1,6 +1,6 @@
 return {
-  dir = vim.fn.stdpath "config" .. "/lua/empty",
-  event = "VeryLazy",
+  "neovim/nvim-lspconfig",
+  lazy = false,
   dependencies = { "saghen/blink.cmp" },
   keys = {
     { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true, desc = "Restart lsp" },
