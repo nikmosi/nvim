@@ -11,9 +11,14 @@ return {
       },
     },
   },
-  on_new_config = function(new_config, new_root_dir)
+  before_init = function(params, config)
+    vim.notify "wow"
     local py = require "config.lang.python_env"
-    py.env(new_root_dir)
-    new_config.settings.python.pythonPath = vim.fn.exepath "python"
+    py.env(config.root_dir)
+    config.settings = vim.tbl_deep_extend("force", config.settings or {}, {
+      python = {
+        pythonPath = vim.fn.exepath "python",
+      },
+    })
   end,
 }
