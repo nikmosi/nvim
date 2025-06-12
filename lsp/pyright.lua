@@ -12,13 +12,14 @@ return {
     },
   },
   before_init = function(params, config)
-    vim.notify "wow"
     local py = require "config.lang.python_env"
-    py.env(config.root_dir)
-    config.settings = vim.tbl_deep_extend("force", config.settings or {}, {
-      python = {
-        pythonPath = vim.fn.exepath "python",
-      },
-    })
+    local bin = py.env(config.root_dir)
+    -- config.settings.python.pythonPath = bin
+    local tabl = vim.tbl_deep_extend(
+      "force",
+      config.settings.python,
+      { pythonPath = bin, analysis = { diagnosticMode = "workspace" } }
+    )
+    config.settings.python = tabl
   end,
 }

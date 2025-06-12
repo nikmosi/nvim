@@ -47,6 +47,8 @@ M.env = function(root_dir)
     vim.env.old_PYTHONHOME = vim.env.PYTHONHOME
     vim.env.PYTHONHOME = ""
   end
+
+  return _virtual_env .. "/bin/python"
 end
 
 return M
