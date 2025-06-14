@@ -93,6 +93,12 @@ return {
                 return hl
               end,
             },
+            kind = {
+              highlight = function(ctx)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                return hl
+              end,
+            },
           },
         },
       },
