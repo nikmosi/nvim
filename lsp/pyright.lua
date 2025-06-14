@@ -2,6 +2,7 @@ return {
   settings = {
     python = {
       analysis = {
+        autoImportCompletions = true,
         autoSearchPaths = true, -- Automatically search for modules
         extraPaths = { "src" },
         diagnosticMode = "workspace", -- Set to workspace to analyze all files

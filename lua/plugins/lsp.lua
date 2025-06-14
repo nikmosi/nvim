@@ -30,6 +30,7 @@ return {
     capabilities.textDocument.semanticTokens = {
       multilineTokenSupport = true,
     }
+    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
     ---@diagnostic enable: missing-fields
 
     vim.lsp.config("*", {
