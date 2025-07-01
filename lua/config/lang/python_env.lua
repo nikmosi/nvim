@@ -27,15 +27,11 @@ end
 local function py_bin_dir(env) return vim.fs.joinpath(env, "bin:") end
 
 M.env = function(root_dir)
-  if vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV ~= "" then
-    vim.notify("venv is defined.", "info")
-    return
-  end
-
   local _virtual_env = get_python_dir(root_dir)
   if not _virtual_env then
-    vim.notify("can't find venv", "error")
-    return
+    vim.notify("can't find venv, falling back to system python", "warn")
+    local system_python = vim.fn.exepath "python" or "python"
+    return system_python
   end
 
   vim.notify("using venv: " .. _virtual_env)
