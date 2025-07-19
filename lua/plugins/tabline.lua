@@ -77,6 +77,10 @@ return {
           fg = function(buffer) return buffer.devicon.color end,
         },
         {
+          text = function(buffer) return buffer.is_modified and "● " or "" end,
+          fg = yellow,
+        },
+        {
           text = function(buffer) return buffer.index .. ": " end,
         },
         {
