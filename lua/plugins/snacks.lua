@@ -15,7 +15,7 @@ return {
     scope = { enabled = true },
     toggle = { enabled = true },
     words = { enabled = true },
-    image = { enabled = false, doc = { inline = false } },
+    image = { enabled = true, doc = { inline = true } },
 
     dashboard = require "config.snacks.dashboard",
     indent = require "config.snacks.indent",
