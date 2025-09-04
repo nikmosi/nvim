@@ -4,7 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    animate = { fls = 165 },
+    animate = { enabled = true, fls = 165 },
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
     explorer = { enabled = true, replace_netrw = false },
