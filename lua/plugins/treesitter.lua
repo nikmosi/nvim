@@ -20,10 +20,10 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn", -- Начало выделения
-            node_incremental = "grn", -- Расширение выделения
-            scope_incremental = "grc", -- Выделение scope (области)
-            node_decremental = "grm", -- Сужение выделения
+            init_selection = "<leader>tn", -- Начало выделения
+            node_incremental = "<leader>tn", -- Расширение выделения
+            scope_incremental = "<leader>tc", -- Выделение scope (области)
+            node_decremental = "<leader>tm", -- Сужение выделения
           },
         },
       }

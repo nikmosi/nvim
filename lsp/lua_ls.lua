@@ -2,14 +2,20 @@ return {
   settings = {
     Lua = {
       format = {
-        enable = false, -- Enable Lua formatting
+        enable = false,
       },
       diagnostics = {
-        globals = { "vim" }, -- Treat 'vim' as a global (for Neovim API)
+        globals = { "vim", "awesome", "client", "screen", "root" },
       },
       workspace = {
-        checkThirdParty = false, -- Disable third-party library checks
+        checkThirdParty = true,
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          -- [vim.env.AWESOME_LUA_LIB] = true,
+        },
       },
+      telemetry = { enable = false },
     },
   },
 }
