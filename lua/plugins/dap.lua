@@ -1,7 +1,8 @@
 return {
   {
+    enable = false,
     "mfussenegger/nvim-dap",
-    dependencies = { "mfussenegger/nvim-dap-python" },
+    -- dependencies = { "mfussenegger/nvim-dap-python" },
     keys = {
 
       { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
@@ -50,6 +51,7 @@ return {
     end,
   },
   {
+    enable = false,
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     keys = {
