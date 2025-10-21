@@ -33,12 +33,18 @@ return {
     capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
     ---@diagnostic enable: missing-fields
 
-    vim.lsp.config("*", {
+    local default_config = {
       capabilities = capabilities,
       root_markers = { ".git" },
-    })
+    }
+
+    vim.lsp.config("*", default_config)
 
     for _, server in pairs(opts.servers) do
+      local ok, conf = pcall(require, "lsp." .. server)
+      local server_config = vim.tbl_deep_extend("force", {}, default_config, ok and conf or {})
+
+      vim.lsp.config(server, server_config)
       vim.lsp.enable(server)
     end
 
