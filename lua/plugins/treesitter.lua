@@ -27,7 +27,7 @@ return {
           },
         },
       }
-      vim.treesitter.language.register("yaml", "compose.yml")
+      vim.treesitter.language.register("yaml", "yaml.docker-compose")
     end,
   },
 
