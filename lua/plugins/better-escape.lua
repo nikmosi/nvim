@@ -1,4 +1,5 @@
 return {
+  enabled = true,
   "max397574/better-escape.nvim",
   event = "VeryLazy",
   opts = {

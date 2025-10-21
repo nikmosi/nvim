@@ -1,1 +1,6 @@
-return { "echasnovski/mini.ai", event = "BufRead", version = "*", opts = {} }
+return {
+  "echasnovski/mini.ai",
+  event = "BufRead",
+  version = "*",
+  opts = {},
+}
