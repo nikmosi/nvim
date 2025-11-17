@@ -1,4 +1,5 @@
 vim.cmd "syntax on"
+vim.opt.langremap = false
 vim.opt.laststatus = 3
 vim.opt.splitkeep = "screen"
 vim.g.loaded_netrw = 1

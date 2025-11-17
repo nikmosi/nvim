@@ -51,7 +51,7 @@ return {
         lib.component.cmd_info(),
         lib.component.fill(),
         lib.component.lsp(),
-        lib.component.compiler_state(), -- needs compiler.nvim/overseer :contentReference[oaicite:4]{index=4}
+        -- lib.component.compiler_state(), -- needs compiler.nvim/overseer :contentReference[oaicite:4]{index=4}
         lib.component.virtual_env(), -- needs venv-selector.nvim :contentReference[oaicite:5]{index=5}
         lib.component.nav(),
         lib.component.mode { surround = { separator = "right" } },
@@ -67,9 +67,9 @@ return {
     heirline.setup(opts)
 
     -- show tabline only when >1 listed buffer
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "HeirlineComponentsTablineBuffersUpdated",
-      callback = function() vim.o.showtabline = (#vim.t.bufs > 1) and 2 or 1 end,
-    }) -- event documented in plugin README. :contentReference[oaicite:6]{index=6}
+    -- vim.api.nvim_create_autocmd("User", {
+    --   pattern = "HeirlineComponentsTablineBuffersUpdated",
+    --   callback = function() vim.o.showtabline = (#vim.t.bufs > 1) and 2 or 1 end,
+    -- }) -- event documented in plugin README. :contentReference[oaicite:6]{index=6}
   end,
 }

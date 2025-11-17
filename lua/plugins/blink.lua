@@ -1,6 +1,5 @@
 return {
   "saghen/blink.cmp",
-  event = "BufRead",
   dependencies = {
     "rafamadriz/friendly-snippets",
     "echasnovski/mini.icons",
