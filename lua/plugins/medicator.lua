@@ -1,5 +1,6 @@
 return {
   "mawkler/modicator.nvim",
+  event = "VeryLazy",
   dependencies = "folke/tokyonight.nvim", -- Add your colorscheme plugin here
   init = function()
     -- These are required for Modicator to work
