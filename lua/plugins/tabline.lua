@@ -6,8 +6,6 @@ return {
     "echasnovski/mini.icons",
   },
   config = function()
-    require("mini.icons").setup()
-    MiniIcons.mock_nvim_web_devicons()
     vim.keymap.set("n", "L", "<Plug>(cokeline-focus-next)", { silent = true, desc = "Next buffer" })
     vim.keymap.set("n", "H", "<Plug>(cokeline-focus-prev)", { silent = true, desc = "Previous buffer" })
     local get_hex = require("cokeline.hlgroups").get_hl_attr
