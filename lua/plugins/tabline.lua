@@ -1,18 +1,20 @@
 return {
   "willothy/nvim-cokeline",
-  lazy = false,
+  event = "BufReadPre",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "echasnovski/mini.icons",
   },
+  keys = {
+    { "L", "<Plug>(cokeline-focus-next)", mode = "n", remap = true, silent = true, desc = "Next buffer" },
+    { "H", "<Plug>(cokeline-focus-prev)", mode = "n", remap = true, silent = true, desc = "Previous buffer" },
+  },
   config = function()
-    vim.keymap.set("n", "L", "<Plug>(cokeline-focus-next)", { silent = true, desc = "Next buffer" })
-    vim.keymap.set("n", "H", "<Plug>(cokeline-focus-prev)", { silent = true, desc = "Previous buffer" })
     local get_hex = require("cokeline.hlgroups").get_hl_attr
     local green = vim.g.terminal_color_2
     local yellow = vim.g.terminal_color_3
     require("cokeline").setup {
-      show_if_buffers_are_at_least = 0,
+      show_if_buffers_are_at_least = 2,
       buffers = {
         filter_valid = false,
         filter_visible = false,
