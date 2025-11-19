@@ -114,6 +114,9 @@ return {
     { "<leader>bc", function() Snacks.bufdelete.delete() end, desc = "Close current buffer", mode = { "n" } },
   },
   init = function()
+    local uv = vim.uv or vim.loop
+    local timer = uv.new_timer()
+    timer:start(0, 5 * 60 * 1000, function() vim.schedule(require("snacks.explorer.watch").refresh) end)
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
