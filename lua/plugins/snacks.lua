@@ -7,7 +7,7 @@ return {
     animate = { enabled = true, fls = 165 },
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
-    explorer = { enabled = true, replace_netrw = false },
+    explorer = { enabled = true, replace_netrw = false, watch = true },
     gitbrowse = { enabled = true },
     notifier = { enabled = true, timeout = 3000 },
     notify = { enabled = true },
