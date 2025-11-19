@@ -5,6 +5,7 @@ return {
     library = {
       "lazy.nvim",
       "snacks.nvim",
+      "Snacks",
       "blink.cmp",
       "conform",
       "MiniIcons",
