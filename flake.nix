@@ -41,7 +41,7 @@
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
-            exec fish
+            exec nu
           '';
         };
       });
