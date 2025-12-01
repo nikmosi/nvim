@@ -32,3 +32,12 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildoptions = "pum"
 vim.opt.wrap = true
 vim.o.scl = "yes"
+
+vim.opt.shell = "/usr/bin/env bash"
+vim.opt.shellcmdflag = "-c"
+vim.opt.shellredir = ">%s 2>&1"
+vim.opt.shellpipe = ">%s 2>&1"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
+
+vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
