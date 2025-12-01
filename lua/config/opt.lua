@@ -33,7 +33,7 @@ vim.opt.wildoptions = "pum"
 vim.opt.wrap = true
 vim.o.scl = "yes"
 
-vim.opt.shell = "/usr/bin/env bash"
+vim.opt.shell = "bash"
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellredir = ">%s 2>&1"
 vim.opt.shellpipe = ">%s 2>&1"
