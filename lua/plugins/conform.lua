@@ -8,6 +8,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
+        sql = { "sqruff_c" },
         fish = { "fish_indent" },
         python = { "ruff_organize_imports", "ruff_format", "ruff_fix", "docformatter" },
         nginx = { "nginxfmt" },
@@ -17,6 +18,11 @@ return {
         topiary_nu = {
           command = "topiary",
           args = { "format", "--language", "nu" },
+        },
+        sqruff_c = {
+          stdin = false,
+          command = "sqruff",
+          args = { "fix", "--force", "$FILENAME" },
         },
       },
       default_format_opts = {
