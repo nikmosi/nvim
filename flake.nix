@@ -38,7 +38,10 @@
 
       devShells = forAllSystems (system: {
         default = nixpkgs.legacyPackages.${system}.mkShell {
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages ++ (with nixpkgs.legacyPackages.${system}; [
+            ripgrep
+            fd
+          ]);
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
             exec nu

@@ -17,3 +17,5 @@ vim.keymap.set("v", "<leader>c", "\"+y", { desc = "Copy visual selection to clip
 
 vim.keymap.set("n", "<leader>W", function() vim.cmd "noautocmd w" end, { desc = "Write without formatting" })
 vim.keymap.set("n", "<leader>w", function() vim.cmd "w" end, { desc = "Write formatting" })
+
+vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })

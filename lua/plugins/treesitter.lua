@@ -6,7 +6,19 @@ return {
     event = "BufRead",
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "c", "python", "git_rebase", "gitcommit" },
+        ensure_installed = {
+          "c",
+          "python",
+          "git_rebase",
+          "gitcommit",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "markdown",
+          "markdown_inline",
+          "nix",
+        },
         sync_install = false,
         auto_install = true,
         ignore_install = {},

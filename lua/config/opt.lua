@@ -2,8 +2,6 @@ vim.cmd "syntax on"
 vim.opt.langremap = false
 vim.opt.laststatus = 3
 vim.opt.splitkeep = "screen"
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 vim.opt.autoread = true
 vim.opt.cursorcolumn = false
 vim.opt.cursorline = true
@@ -39,5 +37,3 @@ vim.opt.shellredir = ">%s 2>&1"
 vim.opt.shellpipe = ">%s 2>&1"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
-
-vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
