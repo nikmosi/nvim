@@ -47,6 +47,7 @@
             ruff
             yaml-language-server
             taplo
+            python311Packages.debugpy
           ]);
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}

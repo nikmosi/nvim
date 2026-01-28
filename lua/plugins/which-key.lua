@@ -13,6 +13,7 @@ return {
   },
   spec = {
     { "<leader>c", group = "code" },
+    { "<leader>d", group = "debug" },
     { "<leader>f", group = "file" },
     { "<leader>g", group = "git" },
     { "<leader>h", group = "gitsigns" },
