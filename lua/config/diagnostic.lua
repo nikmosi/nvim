@@ -1,5 +1,3 @@
-local colors = require("tokyonight.colors").setup()
-
 vim.diagnostic.config {
   virtual_text = true,
   float = { border = "rounded" },
@@ -15,23 +13,20 @@ vim.diagnostic.config {
   },
 }
 
--- Настройка highlight групп для разных типов диагностики
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.red })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, sp = colors.orange })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { underline = true, sp = colors.blue })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { underline = true, sp = colors.green })
+-- Use an autocmd to set highlights after the colorscheme loads
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    -- You can link to existing theme highlights or define your own safely
+    -- Using links is often safer and more consistent
+    vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "DiagnosticUnderlineError" })
+    -- If you want specific overrides, do them here, but check if the colors exist first
+    -- For now, we'll trust the theme's defaults or just link them to ensure consistency
+    -- if the theme defines them (Tokyonight does).
 
--- Настройка цветов для значков (signs)
-vim.api.nvim_set_hl(0, "DiagnosticSignError", { fg = colors.red })
-vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { fg = colors.blue })
-vim.api.nvim_set_hl(0, "DiagnosticSignHint", { fg = colors.green })
-
--- Настройка цветов для всплывающих окон
-vim.api.nvim_set_hl(0, "DiagnosticFloatingError", { fg = colors.red })
-vim.api.nvim_set_hl(0, "DiagnosticFloatingWarn", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", { fg = colors.blue })
-vim.api.nvim_set_hl(0, "DiagnosticFloatingHint", { fg = colors.green })
+    -- If you absolutely need custom colors, define them here using vim.api.nvim_get_hl
+    -- or hardcoded hex if you don't want to depend on the theme module.
+  end,
+})
 
 -- Define DAP signs with JetBrains Mono Nerd icons
 vim.fn.sign_define("DapBreakpoint", {

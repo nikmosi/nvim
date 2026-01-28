@@ -3,7 +3,6 @@ return {
   ft = "lua", -- only load on lua files
   opts = {
     library = {
-      "lazy.nvim",
       "snacks.nvim",
       "Snacks",
       "blink.cmp",
@@ -14,9 +13,6 @@ return {
       -- It can also be a table with trigger words / mods
       -- Only load luvit types when the `vim.uv` word is found
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      -- always load the LazyVim library
-      "LazyVim",
-      -- Only load the lazyvim library when the `LazyVim` global is found
       { path = "LazyVim", words = { "LazyVim" } },
     },
     -- always enable unless `vim.g.lazydev_enabled = false`

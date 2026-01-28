@@ -11,4 +11,12 @@ return {
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+  spec = {
+    { "<leader>f", group = "file" },
+    { "<leader>g", group = "git" },
+    { "<leader>l", group = "lsp" },
+    { "<leader>s", group = "search" },
+    { "<leader>u", group = "ui" },
+    { "<leader>t", group = "toggle/test" },
+  },
 }

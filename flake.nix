@@ -41,6 +41,12 @@
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages ++ (with nixpkgs.legacyPackages.${system}; [
             ripgrep
             fd
+            lua-language-server
+            nixd
+            pyright
+            ruff
+            yaml-language-server
+            taplo
           ]);
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}

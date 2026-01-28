@@ -11,7 +11,7 @@ return {
       "dockerls",
       "lua_ls",
       "nginx_language_server",
-      "nil_ls",
+      -- "nil_ls", -- Use nixd instead
       "nixd",
       "nushell",
       "ty",
