@@ -14,7 +14,7 @@ return {
     local green = vim.g.terminal_color_2
     local yellow = vim.g.terminal_color_3
     require("cokeline").setup {
-      show_if_buffers_are_at_least = 2,
+      show_if_buffers_are_at_least = 1,
       buffers = {
         filter_valid = false,
         filter_visible = false,
