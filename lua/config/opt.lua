@@ -1,6 +1,7 @@
 vim.cmd "syntax on"
 vim.opt.langremap = false
 vim.opt.laststatus = 3
+vim.opt.showtabline = 2
 vim.opt.splitkeep = "screen"
 vim.opt.autoread = true
 vim.opt.cursorcolumn = false
