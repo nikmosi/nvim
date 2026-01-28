@@ -1,6 +1,6 @@
 return {
   "willothy/nvim-cokeline",
-  event = "BufReadPre",
+  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "echasnovski/mini.icons",
