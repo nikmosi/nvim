@@ -3,7 +3,7 @@ return {
   lazy = false,
   dependencies = { "saghen/blink.cmp" },
   keys = {
-    { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true, desc = "Restart lsp" },
+    { "<leader>lsr", vim.cmd.LspRestart, mode = "n", noremap = true, silent = true, desc = "LSP Restart" },
   },
   opts = {
     servers = {
@@ -54,14 +54,44 @@ return {
       callback = function(event)
         local local_opts = { buffer = event.buf }
 
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, local_opts)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, local_opts)
-        vim.keymap.set("n", "go", vim.lsp.buf.type_definition, local_opts)
-        vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, local_opts)
-        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, local_opts)
-        vim.keymap.set("n", "<leader>cd", function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
-        vim.keymap.set({ "n", "x" }, "<leader>cf", function() vim.lsp.buf.format { async = true } end, local_opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, local_opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", local_opts, { desc = "Hover" }))
+        vim.keymap.set(
+          "n",
+          "gi",
+          vim.lsp.buf.implementation,
+          vim.tbl_extend("force", local_opts, { desc = "Go to Implementation" })
+        )
+        vim.keymap.set(
+          "n",
+          "go",
+          vim.lsp.buf.type_definition,
+          vim.tbl_extend("force", local_opts, { desc = "Go to Type Definition" })
+        )
+        vim.keymap.set(
+          "n",
+          "gs",
+          vim.lsp.buf.signature_help,
+          vim.tbl_extend("force", local_opts, { desc = "Signature Help" })
+        )
+        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("force", local_opts, { desc = "Rename" }))
+        vim.keymap.set(
+          "n",
+          "<leader>cd",
+          function() vim.diagnostic.open_float() end,
+          { noremap = true, silent = true, desc = "Line Diagnostics" }
+        )
+        vim.keymap.set(
+          { "n", "x" },
+          "<leader>cf",
+          function() vim.lsp.buf.format { async = true } end,
+          vim.tbl_extend("force", local_opts, { desc = "Format Buffer" })
+        )
+        vim.keymap.set(
+          "n",
+          "<leader>ca",
+          vim.lsp.buf.code_action,
+          vim.tbl_extend("force", local_opts, { desc = "Code Action" })
+        )
       end,
     })
   end,
