@@ -9,11 +9,10 @@ vim.keymap.set("n", "<A-k>", "V:m '<-2<CR>gv=gv<Esc>", { silent = true, desc = "
 vim.keymap.set("n", "q:", ":q<CR>", { noremap = true, silent = true })
 
 -- clips
-vim.keymap.set("n", "<leader>c", "\"+yy", { desc = "Copy operator to clipboard" })
-vim.keymap.set("n", "<leader>v", "\"+p", { desc = "paste operator from clipboard" })
-vim.keymap.set("v", "<leader>v", "\"+p", { desc = "paste operator from clipboard" })
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Delete to void" })
-vim.keymap.set("v", "<leader>c", "\"+y", { desc = "Copy visual selection to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y", { desc = "Yank to clipboard" })
+vim.keymap.set("n", "<leader>Y", "\"+yy", { desc = "Yank line to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p", { desc = "Paste from clipboard" })
+vim.keymap.set("x", "<leader>P", "\"_dP", { desc = "Delete to void" })
 
 vim.keymap.set("n", "<leader>W", function() vim.cmd "noautocmd w" end, { desc = "Write without formatting" })
 vim.keymap.set("n", "<leader>w", function() vim.cmd "w" end, { desc = "Write formatting" })

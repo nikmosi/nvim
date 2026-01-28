@@ -58,10 +58,10 @@ return {
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, local_opts)
         vim.keymap.set("n", "go", vim.lsp.buf.type_definition, local_opts)
         vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, local_opts)
-        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, local_opts)
-        vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
-        vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format { async = true } end, local_opts)
-        vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, local_opts)
+        vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, local_opts)
+        vim.keymap.set("n", "<leader>cd", function() vim.diagnostic.open_float() end, { noremap = true, silent = true })
+        vim.keymap.set({ "n", "x" }, "<leader>cf", function() vim.lsp.buf.format { async = true } end, local_opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, local_opts)
       end,
     })
   end,
