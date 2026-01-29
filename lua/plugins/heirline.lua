@@ -474,10 +474,10 @@ return {
       ScrollBar,
     }
 
-    local WinBar = {
-      FileNameBlock,
-      Align,
-    }
+    -- local WinBar = {
+    --   FileNameBlock,
+    --   Align,
+    -- }
 
     return {
       opts = {
@@ -490,7 +490,7 @@ return {
         end,
       },
       statusline = DefaultStatusline,
-      winbar = WinBar,
+      -- winbar = WinBar,
       tabline = { BufferLine, TabPages },
       statuscolumn = has_statuscol and {
         init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
