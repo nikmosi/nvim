@@ -10,10 +10,12 @@ return {
     local lib = require "heirline-components.all"
     local has_statuscol = vim.fn.has "nvim-0.10" == 1
     local utils = require "heirline.utils"
+    local conditions = require "heirline.conditions"
 
-    -- Manual buffer list management to fix updates
+    -------------------------------------------------------------------------
+    -- TABLINE LOGIC (Manual Cache)
+    -------------------------------------------------------------------------
     local buflist_cache = {}
-
     local get_bufs = function()
       return vim.tbl_filter(
         function(bufnr) return vim.api.nvim_get_option_value("buflisted", { buf = bufnr }) end,
@@ -34,9 +36,7 @@ return {
       end)
     end
 
-    -- Initialize
     update_buflist()
-
     vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
       callback = update_buflist,
     })
@@ -47,7 +47,6 @@ return {
         self.is_modified = vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
         self.is_active = vim.api.nvim_get_current_buf() == self.bufnr
       end,
-      -- Buffer info part (Switch on left click, Close on right click)
       {
         on_click = {
           callback = function(_, minwid, _, button)
@@ -59,7 +58,6 @@ return {
               else
                 vim.api.nvim_buf_delete(minwid, { force = false })
               end
-              -- The autocommand will handle the redraw
             end
           end,
           minwid = function(self) return self.bufnr end,
@@ -78,27 +76,20 @@ return {
           provider = function(self) return self.icon and (self.icon .. " ") end,
           hl = function(self) return { fg = self.icon_color } end,
         },
-        {
-          provider = function(self) return self.is_modified and "● " or "" end,
-          hl = { fg = "yellow" },
-        },
-        {
-          provider = function(self) return self.bufnr .. ": " end,
-        },
+        { provider = function(self) return self.is_modified and "● " or "" end, hl = { fg = "yellow" } },
+        { provider = function(self) return self.bufnr .. ": " end },
         {
           provider = function(self)
             return self.filename == "" and "[No Name]" or vim.fn.fnamemodify(self.filename, ":t") .. " "
           end,
           hl = function(self)
-            if self.is_active then
-              return { bold = true, fg = utils.get_highlight("Normal").fg }
-            else
-              return { fg = utils.get_highlight("Comment").fg }
-            end
+            return {
+              bold = self.is_active,
+              fg = self.is_active and utils.get_highlight("Normal").fg or utils.get_highlight("Comment").fg,
+            }
           end,
         },
       },
-      -- Close button part (Close on left click)
       {
         provider = "󰅖 ",
         hl = { fg = "gray" },
@@ -109,7 +100,6 @@ return {
             else
               vim.api.nvim_buf_delete(minwid, { force = false })
             end
-            -- The autocommand will handle the redraw
           end,
           minwid = function(self) return self.bufnr end,
           name = "heirline_tabline_close_buffer_callback",
@@ -120,14 +110,63 @@ return {
 
     local BufferLine = utils.make_buflist(
       TablineBufnode,
-      { provider = "", hl = { fg = "gray" } }, -- left truncation
-      { provider = "", hl = { fg = "gray" } }, -- right truncation
+      { provider = "", hl = { fg = "gray" } },
+      { provider = "", hl = { fg = "gray" } },
       function() return buflist_cache end,
       false
     )
 
+    -------------------------------------------------------------------------
+    -- NEW COMPONENTS
+    -------------------------------------------------------------------------
+
+    -- 1. Macro Recording Indicator
+    local MacroRec = {
+      condition = function() return vim.fn.reg_recording() ~= "" end,
+      provider = "  ",
+      hl = { fg = "orange", bold = true },
+      utils.surround({ "[", "]" }, nil, {
+        provider = function() return vim.fn.reg_recording() end,
+        hl = { fg = "green", bold = true },
+      }),
+      update = { "RecordingEnter", "RecordingLeave" },
+    }
+
+    -- 2. Search Count
+    local SearchCount = {
+      condition = function() return vim.v.hlsearch ~= 0 and vim.o.cmdheight == 0 end,
+      init = function(self)
+        local ok, search = pcall(vim.fn.searchcount)
+        if ok and search.total then
+          self.search = search
+        end
+      end,
+      provider = function(self)
+        local search = self.search
+        return string.format(" [%d/%d]", search.current, math.min(search.total, search.maxcount))
+      end,
+      hl = { fg = "purple", bold = true },
+    }
+
+    -- 3. DAP (Debug) Status
+    local DapStatus = {
+      condition = function() return package.loaded["dap"] and require("dap").session() end,
+      provider = function() return "  " .. require("dap").status() end,
+      hl = { fg = "red", bold = true },
+    }
+
+    -------------------------------------------------------------------------
+    -- WINBAR (Breadcrumbs)
+    -------------------------------------------------------------------------
+    local WinBar = {
+      lib.component.breadcrumbs(),
+      lib.component.fill(),
+    }
+
+    -------------------------------------------------------------------------
+    -- FINAL CONFIG
+    -------------------------------------------------------------------------
     return {
-      -- note: this only matters if you define a winbar
       opts = {
         disable_winbar_cb = function(args)
           local buf = args.buf
@@ -141,24 +180,23 @@ return {
               "aerial",
               "snacks_picker_list",
               "snacks_explorer",
+              "toggleterm",
             },
           }, buf)
         end,
       },
-
       tabline = {
         BufferLine,
         lib.component.fill { hl = { bg = "tabline_bg" } },
         lib.component.tabline_tabpages(),
       },
-
+      winbar = WinBar, -- Activated!
       statuscolumn = has_statuscol and {
         init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
         lib.component.foldcolumn(),
         lib.component.numbercolumn(),
         lib.component.signcolumn(),
       } or nil,
-
       statusline = {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
@@ -168,10 +206,12 @@ return {
         lib.component.diagnostics(),
         lib.component.fill(),
         lib.component.cmd_info(),
+        MacroRec, -- Added
+        SearchCount, -- Added
+        DapStatus, -- Added
         lib.component.fill(),
         lib.component.lsp(),
-        -- lib.component.compiler_state(), -- needs compiler.nvim/overseer :contentReference[oaicite:4]{index=4}
-        lib.component.virtual_env(), -- needs venv-selector.nvim :contentReference[oaicite:5]{index=5}
+        lib.component.virtual_env(),
         lib.component.nav(),
         lib.component.mode { surround = { separator = "right" } },
       },
@@ -180,7 +220,6 @@ return {
   config = function(_, opts)
     local heirline = require "heirline"
     local hc = require "heirline-components.all"
-
     hc.init.subscribe_to_events()
     heirline.load_colors(hc.hl.get_colors())
     heirline.setup(opts)
