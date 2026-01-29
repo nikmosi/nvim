@@ -31,7 +31,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildoptions = "pum"
 vim.opt.wrap = true
 vim.o.scl = "yes"
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 vim.opt.shell = "bash"
 vim.opt.shellcmdflag = "-c"
