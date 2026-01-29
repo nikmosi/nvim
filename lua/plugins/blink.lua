@@ -7,6 +7,7 @@ return {
     "Kaiser-Yang/blink-cmp-avante",
     "bydlw98/blink-cmp-env",
     "disrupted/blink-cmp-conventional-commits",
+    "ph1losof/ecolog.nvim",
   },
 
   version = "*",
