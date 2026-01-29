@@ -11,6 +11,36 @@ return {
     local has_statuscol = vim.fn.has "nvim-0.10" == 1
     local utils = require "heirline.utils"
 
+    -- Manual buffer list management to fix updates
+    local buflist_cache = {}
+
+    local get_bufs = function()
+      return vim.tbl_filter(
+        function(bufnr) return vim.api.nvim_get_option_value("buflisted", { buf = bufnr }) end,
+        vim.api.nvim_list_bufs()
+      )
+    end
+
+    local function update_buflist()
+      vim.schedule(function()
+        local buffers = get_bufs()
+        for i, v in ipairs(buffers) do
+          buflist_cache[i] = v
+        end
+        for i = #buffers + 1, #buflist_cache do
+          buflist_cache[i] = nil
+        end
+        vim.cmd.redrawtabline()
+      end)
+    end
+
+    -- Initialize
+    update_buflist()
+
+    vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
+      callback = update_buflist,
+    })
+
     local TablineBufnode = {
       init = function(self)
         self.filename = vim.api.nvim_buf_get_name(self.bufnr)
@@ -29,7 +59,7 @@ return {
               else
                 vim.api.nvim_buf_delete(minwid, { force = false })
               end
-              vim.cmd.redrawtabline()
+              -- The autocommand will handle the redraw
             end
           end,
           minwid = function(self) return self.bufnr end,
@@ -79,7 +109,7 @@ return {
             else
               vim.api.nvim_buf_delete(minwid, { force = false })
             end
-            vim.cmd.redrawtabline()
+            -- The autocommand will handle the redraw
           end,
           minwid = function(self) return self.bufnr end,
           name = "heirline_tabline_close_buffer_callback",
@@ -91,7 +121,9 @@ return {
     local BufferLine = utils.make_buflist(
       TablineBufnode,
       { provider = "", hl = { fg = "gray" } }, -- left truncation
-      { provider = "", hl = { fg = "gray" } } -- right truncation
+      { provider = "", hl = { fg = "gray" } }, -- right truncation
+      function() return buflist_cache end,
+      false
     )
 
     return {
