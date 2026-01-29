@@ -35,18 +35,6 @@ return {
         "conventional_commits",
         "gitmoji",
       },
-      -- Explicitly configure cmdline sources
-      cmdline = function()
-        local type = vim.fn.getcmdtype()
-        if type == "/" or type == "?" then
-          return { "buffer" }
-        end
-        if type == ":" then
-          return { "cmdline", "path" }
-        end
-        return {}
-      end,
-
       providers = {
         lsp = {
           name = "LSP",
@@ -129,6 +117,19 @@ return {
           enabled = function() return vim.bo.filetype == "gitcommit" end,
         },
       },
+    },
+
+    cmdline = {
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        if type == "/" or type == "?" then
+          return { "buffer" }
+        end
+        if type == ":" then
+          return { "cmdline", "path" }
+        end
+        return {}
+      end,
     },
 
     fuzzy = { implementation = "prefer_rust_with_warning" },
