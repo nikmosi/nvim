@@ -17,7 +17,18 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "buffer", "snippetsc" },
+      default = { "lsp", "path", "buffer", "snippets", "lazydev", "git" },
+      -- Explicitly configure cmdline sources
+      cmdline = function()
+        local type = vim.fn.getcmdtype()
+        if type == "/" or type == "?" then
+          return { "buffer" }
+        end
+        if type == ":" then
+          return { "cmdline", "path" }
+        end
+        return {}
+      end,
 
       providers = {
         lsp = {
@@ -34,7 +45,7 @@ return {
 
           score_offset = 100,
         },
-        snippetsc = {
+        snippets = {
           name = "SNIPPETS",
           module = "blink.cmp.sources.snippets",
           opts = {},
@@ -50,6 +61,17 @@ return {
           fallbacks = {},
           score_offset = 0,
           override = nil,
+        },
+        buffer = {
+          opts = {
+            -- Suggest words from all open/listed buffers, not just the current one
+            get_bufnrs = function()
+              return vim.tbl_filter(
+                function(bufnr) return vim.api.nvim_get_option_value("buflisted", { buf = bufnr }) end,
+                vim.api.nvim_list_bufs()
+              )
+            end,
+          },
         },
 
         git = {
@@ -73,7 +95,7 @@ return {
     fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = { enabled = true, window = { border = "single" } },
     completion = {
-      documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = "single" } },
+      documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = "single" } },
       ghost_text = { enabled = true },
       menu = {
         border = "single",
