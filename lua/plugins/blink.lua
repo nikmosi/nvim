@@ -6,7 +6,6 @@ return {
     { "Kaiser-Yang/blink-cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
     "Kaiser-Yang/blink-cmp-avante",
     "bydlw98/blink-cmp-env",
-    "ph1losof/ecolog.nvim",
     "disrupted/blink-cmp-conventional-commits",
   },
 
