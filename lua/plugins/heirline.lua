@@ -122,8 +122,8 @@ return {
 
     -- 1. Macro Recording Indicator
     local MacroRec = {
-      condition = function() return vim.fn.reg_recording() ~= "" end,
-      provider = "  ",
+      condition = function() return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0 end,
+      provider = " ",
       hl = { fg = "orange", bold = true },
       utils.surround({ "[", "]" }, nil, {
         provider = function() return vim.fn.reg_recording() end,
@@ -143,12 +143,24 @@ return {
       end,
       provider = function(self)
         local search = self.search
-        return string.format(" [%d/%d]", search.current, math.min(search.total, search.maxcount))
+        return string.format("[%d/%d]", search.current, math.min(search.total, search.maxcount))
       end,
-      hl = { fg = "purple", bold = true },
     }
 
-    -- 3. DAP (Debug) Status
+    -- 3. Spell
+    local Spell = {
+      condition = function() return vim.wo.spell end,
+      provider = "SPELL ",
+      hl = { bold = true, fg = "orange" },
+    }
+
+    -- 4. ShowCmd
+    local ShowCmd = {
+      condition = function() return vim.o.cmdheight == 0 end,
+      provider = ":%3.5(%S%)",
+    }
+
+    -- 5. DAP (Debug) Status
     local DapStatus = {
       condition = function() return package.loaded["dap"] and require("dap").session() end,
       provider = function() return "  " .. require("dap").status() end,
@@ -206,9 +218,11 @@ return {
         lib.component.diagnostics(),
         lib.component.fill(),
         lib.component.cmd_info(),
-        MacroRec, -- Added
-        SearchCount, -- Added
-        DapStatus, -- Added
+        MacroRec,
+        ShowCmd,
+        SearchCount,
+        Spell,
+        DapStatus,
         lib.component.fill(),
         lib.component.lsp(),
         lib.component.virtual_env(),
@@ -218,6 +232,7 @@ return {
     }
   end,
   config = function(_, opts)
+    vim.opt.showcmdloc = "statusline"
     local heirline = require "heirline"
     local hc = require "heirline-components.all"
     hc.init.subscribe_to_events()
