@@ -29,6 +29,7 @@ return {
         "snippets",
         "lazydev",
         "git",
+        "ecolog",
         "avante",
         "env",
         "sshconfig",
@@ -94,17 +95,18 @@ return {
             },
           },
         },
+        ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
         avante = {
+          module = "blink-cmp-avante",
           name = "Avante",
-          module = "blink.cmp.sources.avante",
         },
         env = {
           name = "Env",
-          module = "blink.cmp.sources.env",
+          module = "blink-cmp-env",
         },
         sshconfig = {
           name = "SSHConfig",
-          module = "blink.cmp.sources.sshconfig",
+          module = "blink-cmp-sshconfig",
         },
         conventional_commits = {
           name = "Conventional Commits",
@@ -114,6 +116,9 @@ return {
         gitmoji = {
           module = "gitmoji.blink",
           name = "Gitmoji",
+          opts = {
+            filetypes = { "gitcommit", "jj" },
+          },
           enabled = function() return vim.bo.filetype == "gitcommit" end,
         },
       },
