@@ -4,6 +4,11 @@ return {
     "rafamadriz/friendly-snippets",
     "echasnovski/mini.icons",
     { "Kaiser-Yang/blink-cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
+    "Kaiser-Yang/blink-cmp-avante",
+    "bydlw98/blink-cmp-env",
+    "bydlw98/blink-cmp-sshconfig",
+    "ph1losof/ecolog.nvim",
+    "disrupted/blink-cmp-conventional-commits",
   },
 
   version = "*",
@@ -17,7 +22,19 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "buffer", "snippets", "lazydev", "git" },
+      default = {
+        "lsp",
+        "path",
+        "buffer",
+        "snippets",
+        "lazydev",
+        "git",
+        "avante",
+        "env",
+        "sshconfig",
+        "conventional_commits",
+        "gitmoji",
+      },
       -- Explicitly configure cmdline sources
       cmdline = function()
         local type = vim.fn.getcmdtype()
@@ -88,6 +105,28 @@ return {
               gitlab = {},
             },
           },
+        },
+        avante = {
+          name = "Avante",
+          module = "blink.cmp.sources.avante",
+        },
+        env = {
+          name = "Env",
+          module = "blink.cmp.sources.env",
+        },
+        sshconfig = {
+          name = "SSHConfig",
+          module = "blink.cmp.sources.sshconfig",
+        },
+        conventional_commits = {
+          name = "Conventional Commits",
+          module = "blink-cmp-conventional-commits",
+          action_down = "next",
+        },
+        gitmoji = {
+          module = "gitmoji.blink",
+          name = "Gitmoji",
+          enabled = function() return vim.bo.filetype == "gitcommit" end,
         },
       },
     },
