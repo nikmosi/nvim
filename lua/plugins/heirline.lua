@@ -190,7 +190,7 @@ return {
         lib.component.fill { hl = { bg = "tabline_bg" } },
         lib.component.tabline_tabpages(),
       },
-      winbar = WinBar, -- Activated!
+      -- winbar = WinBar, -- Activated!
       statuscolumn = has_statuscol and {
         init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
         lib.component.foldcolumn(),
