@@ -29,6 +29,7 @@ vim.opt.wildignore = "*.o,*.obj,*~,*.swp,*.git,*.hg,*.svn,*.DS_Store"
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 vim.opt.wildoptions = "pum"
+vim.opt.scrolloff = 10 -- Always keep 10 lines below the cursor
 vim.opt.wrap = true
 vim.o.scl = "yes"
 vim.opt.cmdheight = 0

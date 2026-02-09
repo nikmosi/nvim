@@ -48,6 +48,7 @@
             yaml-language-server
             taplo
             python311Packages.debugpy
+            hadolint
           ]);
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
