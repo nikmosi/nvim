@@ -9,11 +9,13 @@ return {
     servers = {
       "docker_compose_language_service",
       "dockerls",
+      "helm_ls",
       "lua_ls",
       "nginx_language_server",
       -- "nil_ls", -- Use nixd instead
       "nixd",
       "nushell",
+      "terraformls",
       "ty",
       "pyright",
       "ruff",

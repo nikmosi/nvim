@@ -40,3 +40,16 @@ vim.opt.shellredir = ">%s 2>&1"
 vim.opt.shellpipe = ">%s 2>&1"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
+
+vim.g.firenvim_config = {
+  globalSettings = { alt = "all" },
+  localSettings = {
+    [".*"] = {
+      cmdline = "neovim",
+      content = "text",
+      priority = 0,
+      selector = "textarea",
+      takeover = "always",
+    },
+  },
+}

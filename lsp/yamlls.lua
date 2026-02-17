@@ -55,10 +55,16 @@ return {
         kubernetes = {
           "**/k8s/*.yml",
           "**/k8s/*.yaml",
+          "**/k8s/**/*.yml",
+          "**/k8s/**/*.yaml",
+          "**/*.k8s.yml",
+          "**/*.k8s.yaml",
           "**/*-k8s.yml",
           "**/*-k8s.yaml",
           "**/kubernetes/*.yml",
           "**/kubernetes/*.yaml",
+          "**/kubernetes/**/*.yml",
+          "**/kubernetes/**/*.yaml",
         },
       },
 
