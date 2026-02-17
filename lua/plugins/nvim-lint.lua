@@ -74,6 +74,17 @@ return {
     }
 
     local function resolve_cmd(linter)
+      if type(linter) == "function" then
+        local ok, res = pcall(linter)
+        if ok then
+          linter = res
+        else
+          return nil
+        end
+      end
+      if type(linter) ~= "table" then
+        return nil
+      end
       local cmd = linter.cmd
       if type(cmd) == "function" then
         local ok, res = pcall(cmd)
