@@ -14,6 +14,8 @@ return {
       ["yaml.github"] = { "actionlint", "yamllint" },
       ["yaml.ansible"] = { "ansible_lint", "yamllint" },
       ["yaml.docker-compose"] = { "yamllint" },
+      ["yaml.kubernetes"] = { "kubeconform", "kubeval", "yamllint" },
+      ["yaml.kustomize"] = { "yamllint" },
       json = { "jsonlint", "jq" },
       jsonc = { "jsonlint", "jq" },
       markdown = { "markdownlint-cli2", "markdownlint", "vale", "proselint", "write_good" },
