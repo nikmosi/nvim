@@ -1,6 +1,9 @@
 local M = {}
 
 local function get_python_dir(root_dir)
+  if not root_dir then
+    return nil
+  end
   -- Ищем .venv в корне проекта
   local venv_path = vim.fs.joinpath(root_dir, ".venv")
   local stat = vim.uv.fs_stat(venv_path)
