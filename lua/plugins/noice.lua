@@ -1,5 +1,6 @@
 return {
   "folke/noice.nvim",
+  enabled = function() return not vim.g.started_by_firenvim end,
   event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
