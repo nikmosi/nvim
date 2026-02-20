@@ -41,15 +41,37 @@ vim.opt.shellpipe = ">%s 2>&1"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
 
-vim.g.firenvim_config = {
-  globalSettings = { alt = "all" },
-  localSettings = {
-    [".*"] = {
-      cmdline = "neovim",
-      content = "text",
-      priority = 0,
-      selector = "textarea",
-      takeover = "always",
+local shada_dir = vim.fn.stdpath "state" .. "/shada"
+if vim.fn.filewritable(shada_dir) ~= 2 then
+  vim.opt.shadafile = "/tmp/nvim.shada"
+end
+
+if vim.g.started_by_firenvim then
+  vim.g.firenvim_config = {
+    globalSettings = { alt = "all" },
+    localSettings = {
+      [".*"] = {
+        selector = "textarea, [contenteditable='true'], [contenteditable='plaintext-only'], div[role='textbox']",
+        takeover = "never",
+      },
     },
-  },
-}
+  }
+end
+--
+-- if vim.g.started_by_firenvim then
+--   local max_height = 10
+--   local id = vim.api.nvim_create_augroup("ExpandLinesOnTextChanged", { clear = true })
+--   vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+--     group = id,
+--     callback = function(ev)
+--       local height = vim.api.nvim_win_text_height(0, {}).all
+--       if height > vim.o.lines then
+--         if height < max_height then
+--           vim.o.lines = height
+--         else
+--           vim.o.lines = max_height
+--         end
+--       end
+--     end,
+--   })
+-- end
