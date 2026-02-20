@@ -47,6 +47,9 @@ return {
       local server_config = vim.tbl_deep_extend("force", {}, default_config, ok and conf or {})
 
       vim.lsp.config(server, server_config)
+      if server_config.filetypes then
+        vim.lsp.config[server].filetypes = server_config.filetypes
+      end
       vim.lsp.enable(server)
     end
 

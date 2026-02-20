@@ -111,6 +111,15 @@ return {
       if not linter then
         return false
       end
+      if name == "vale" then
+        local has_project = vim.fn.findfile(".vale.ini", ".;") ~= "" or vim.fn.findfile("Vale.ini", ".;") ~= ""
+        local user_vale = vim.fn.expand "~/.vale.ini"
+        local user_config_vale = vim.fn.expand "~/.config/vale/.vale.ini"
+        local has_user = vim.fn.filereadable(user_vale) == 1 or vim.fn.filereadable(user_config_vale) == 1
+        if not (has_project or has_user) then
+          return false
+        end
+      end
       local cmd = resolve_cmd(linter)
       if not cmd then
         return false

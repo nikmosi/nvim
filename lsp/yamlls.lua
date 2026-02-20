@@ -1,4 +1,11 @@
 return {
+  filetypes = {
+    "yaml",
+    "yaml.docker-compose",
+    "yaml.gitlab",
+    "yaml.helm-values",
+    "yaml.kubernetes",
+  },
   settings = {
     yaml = {
       validate = true,
@@ -61,6 +68,14 @@ return {
           "**/*.k8s.yaml",
           "**/*-k8s.yml",
           "**/*-k8s.yaml",
+          "**/kube/*.yml",
+          "**/kube/*.yaml",
+          "**/kube/**/*.yml",
+          "**/kube/**/*.yaml",
+          "**/*.kube.yml",
+          "**/*.kube.yaml",
+          "**/*-kube.yml",
+          "**/*-kube.yaml",
           "**/kubernetes/*.yml",
           "**/kubernetes/*.yaml",
           "**/kubernetes/**/*.yml",
