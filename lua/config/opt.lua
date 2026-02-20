@@ -51,27 +51,24 @@ if vim.g.started_by_firenvim then
     globalSettings = { alt = "all" },
     localSettings = {
       [".*"] = {
-        selector = "textarea, [contenteditable='true'], [contenteditable='plaintext-only'], div[role='textbox']",
+        selector = "textarea",
         takeover = "never",
       },
     },
   }
+  local min_height = 10
+  local function enforce_min_lines()
+    if vim.o.lines < min_height then
+      vim.o.lines = min_height
+    end
+  end
+
+  vim.api.nvim_create_autocmd({ "UIEnter", "VimResized" }, {
+    callback = function() vim.schedule(enforce_min_lines) end,
+  })
+
+  vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "lines",
+    callback = function() enforce_min_lines() end,
+  })
 end
---
--- if vim.g.started_by_firenvim then
---   local max_height = 10
---   local id = vim.api.nvim_create_augroup("ExpandLinesOnTextChanged", { clear = true })
---   vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
---     group = id,
---     callback = function(ev)
---       local height = vim.api.nvim_win_text_height(0, {}).all
---       if height > vim.o.lines then
---         if height < max_height then
---           vim.o.lines = height
---         else
---           vim.o.lines = max_height
---         end
---       end
---     end,
---   })
--- end
