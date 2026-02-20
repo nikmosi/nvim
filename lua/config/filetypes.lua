@@ -4,6 +4,7 @@ vim.filetype.add {
     ["compose%.ya?ml"] = "yaml.docker-compose",
     ["docker-compose%.ya?ml"] = "yaml.docker-compose",
     [".*/%.github[%w/]+workflows[%w/]+.*%.ya?ml"] = "yaml.github",
+    [".*/%.gitlab%-ci%.ya?ml"] = "yaml.gitlab",
     [".*/kustomization%.ya?ml"] = "yaml.kustomize",
     [".*/templates/.*%.ya?ml"] = "helm",
     [".*/templates/.*%.tpl"] = "helm",
@@ -22,5 +23,9 @@ vim.filetype.add {
     [".*/deployment/.*%.ya?ml"] = "yaml.kubernetes",
     [".*/base/.*%.ya?ml"] = "yaml.kubernetes",
     [".*/overlays/.*%.ya?ml"] = "yaml.kubernetes",
+  },
+  extension = {
+    tfvars = "terraform-vars",
+    tfvarsjson = "terraform-vars",
   },
 }
