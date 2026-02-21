@@ -40,7 +40,12 @@ return {
           module = "blink.cmp.sources.lsp",
           transform_items = function(_, items)
             local types = require "blink.cmp.types"
-            return vim.tbl_filter(function(item) return item.kind ~= types.CompletionItemKind.Keyword end, items)
+            for _, item in ipairs(items) do
+              if item.kind == types.CompletionItemKind.Keyword then
+                item.score_offset = (item.score_offset or 0) - 80
+              end
+            end
+            return items
           end,
         },
         lazydev = {
