@@ -1,7 +1,7 @@
 return {
-  "cuducos/yaml.nvim",
-  ft = { "yaml" }, -- optional
+  "https://tangled.org/cuducos.me/yaml.nvim",
+  ft = { "yaml" },
   dependencies = {
-    "folke/snacks.nvim", -- optional
+    "folke/snacks.nvim",
   },
 }
