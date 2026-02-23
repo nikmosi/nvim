@@ -39,12 +39,11 @@ return {
       capabilities = capabilities,
       root_markers = { ".git" },
     }
-
-    vim.lsp.config("*", default_config)
-
     for _, server in pairs(opts.servers) do
       vim.lsp.enable(server)
     end
+
+    vim.lsp.config("*", default_config)
 
     -- Autocommand for LSP actions
     vim.api.nvim_create_autocmd("LspAttach", {
