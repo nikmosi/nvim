@@ -110,7 +110,6 @@ return {
         conventional_commits = {
           name = "Conventional Commits",
           module = "blink-cmp-conventional-commits",
-          action_down = "next",
         },
         gitmoji = {
           module = "gitmoji.blink",
