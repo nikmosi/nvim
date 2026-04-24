@@ -1,6 +1,7 @@
 return {
   "saghen/blink.cmp",
   dependencies = {
+    "rafamadriz/friendly-snippets",
     "echasnovski/mini.icons",
     { "Kaiser-Yang/blink-cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
     "Kaiser-Yang/blink-cmp-avante",
@@ -14,7 +15,6 @@ return {
   ---@type blink.cmp.Config
   opts = {
     keymap = { preset = "super-tab" },
-
     appearance = {
       nerd_font_variant = "mono",
     },
@@ -56,7 +56,10 @@ return {
         snippets = {
           name = "SNIPPETS",
           module = "blink.cmp.sources.snippets",
-          opts = {},
+          opts = {
+            friendly_snippets = true,
+            search_paths = { vim.fn.stdpath "config" .. "/snippets" },
+          },
 
           enabled = true,
           async = false,

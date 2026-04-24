@@ -1,0 +1,13 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "markdown", "path": "./markdown.json" },
+      { "language": "gitcommit", "path": "./gitcommit.json" },
+      { "language": "python", "path": "./python.json" },
+      { "language": "lua", "path": "./lua.json" },
+      { "language": "nix", "path": "./nix.json" },
+      { "language": "yaml", "path": "./yaml.json" }
+    ]
+  }
+}

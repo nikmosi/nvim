@@ -1,0 +1,54 @@
+{
+  "ifmain": {
+    "prefix": "ifmain",
+    "body": [
+      "if __name__ == \"__main__\":",
+      "    ${0:main()}"
+    ],
+    "description": "Main entry guard"
+  },
+  "dataclass": {
+    "prefix": "dataclass",
+    "body": [
+      "from dataclasses import dataclass",
+      "",
+      "@dataclass",
+      "class ${1:ClassName}:",
+      "    ${2:field}: ${3:type}",
+      "    ${0}"
+    ],
+    "description": "Dataclass template"
+  },
+  "pytest": {
+    "prefix": "pytest",
+    "body": [
+      "def test_${1:name}():",
+      "    ${0:assert True}"
+    ],
+    "description": "pytest test function"
+  },
+  "logger": {
+    "prefix": "logger",
+    "body": [
+      "import logging",
+      "",
+      "logger = logging.getLogger(__name__)",
+      "${0}"
+    ],
+    "description": "Module logger"
+  },
+  "docstring": {
+    "prefix": "docstring",
+    "body": [
+      "\"\"\"${1:Summary}.",
+      "",
+      "Args:",
+      "    ${2:param}: ${3:Description}",
+      "",
+      "Returns:",
+      "    ${4:Type}: ${5:Description}",
+      "\"\"\""
+    ],
+    "description": "Docstring template"
+  }
+}

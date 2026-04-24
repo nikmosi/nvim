@@ -1,0 +1,58 @@
+{
+  "feat": {
+    "prefix": "feat",
+    "body": [
+      "feat(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: feat"
+  },
+  "fix": {
+    "prefix": "fix",
+    "body": [
+      "fix(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: fix"
+  },
+  "chore": {
+    "prefix": "chore",
+    "body": [
+      "chore(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: chore"
+  },
+  "refactor": {
+    "prefix": "refactor",
+    "body": [
+      "refactor(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: refactor"
+  },
+  "docs": {
+    "prefix": "docs",
+    "body": [
+      "docs(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: docs"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "test(${1:scope}): ${2:subject}"
+    ],
+    "description": "Conventional commit: test"
+  },
+  "Co-authored-by": {
+    "prefix": "coauth",
+    "body": [
+      "Co-authored-by: ${1:Name} <${2:email}>"
+    ],
+    "description": "Co-authored-by footer"
+  },
+  "Closes": {
+    "prefix": "closes",
+    "body": [
+      "Closes: #${1:issue}"
+    ],
+    "description": "Closes footer"
+  }
+}

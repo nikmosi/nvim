@@ -1,0 +1,57 @@
+{
+  "Frontmatter": {
+    "prefix": "frontmatter",
+    "body": [
+      "---",
+      "title: ${1:Title}",
+      "date: ${2:YYYY-MM-DD}",
+      "tags: [${3:tag}]",
+      "---",
+      "$0"
+    ],
+    "description": "YAML frontmatter block"
+  },
+  "Callout": {
+    "prefix": "callout",
+    "body": [
+      "> [!${1:NOTE}]",
+      "> ${2:message}",
+      "$0"
+    ],
+    "description": "Markdown callout"
+  },
+  "Task": {
+    "prefix": "task",
+    "body": [
+      "- [ ] ${1:todo}"
+    ],
+    "description": "Markdown task list item"
+  },
+  "Table 2x2": {
+    "prefix": "table2",
+    "body": [
+      "| ${1:Col1} | ${2:Col2} |",
+      "| --- | --- |",
+      "| ${3:} | ${4:} |"
+    ],
+    "description": "2 column markdown table"
+  },
+  "Table 3x2": {
+    "prefix": "table3",
+    "body": [
+      "| ${1:Col1} | ${2:Col2} | ${3:Col3} |",
+      "| --- | --- | --- |",
+      "| ${4:} | ${5:} | ${6:} |"
+    ],
+    "description": "3 column markdown table"
+  },
+  "Code Block": {
+    "prefix": "codeblock",
+    "body": [
+      "```$1",
+      "$0",
+      "```"
+    ],
+    "description": "Fenced code block"
+  }
+}

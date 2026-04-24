@@ -1,0 +1,49 @@
+{
+  "module": {
+    "prefix": "module",
+    "body": [
+      "local M = {}",
+      "",
+      "$0",
+      "",
+      "return M"
+    ],
+    "description": "Lua module template"
+  },
+  "keymap": {
+    "prefix": "keymap",
+    "body": [
+      "vim.keymap.set(\"${1:n}\", \"${2:<leader>}\", function()",
+      "  ${0}",
+      "end, { desc = \"${3:Desc}\" })"
+    ],
+    "description": "Neovim keymap"
+  },
+  "autocmd": {
+    "prefix": "autocmd",
+    "body": [
+      "local group = vim.api.nvim_create_augroup(\"${1:Group}\", { clear = true })",
+      "",
+      "vim.api.nvim_create_autocmd({ \"${2:BufEnter}\" }, {",
+      "  group = group,",
+      "  callback = function()",
+      "    ${0}",
+      "  end,",
+      "})"
+    ],
+    "description": "Neovim autocmd"
+  },
+  "lazyplugin": {
+    "prefix": "lazy",
+    "body": [
+      "return {",
+      "  \"${1:author/repo}\",",
+      "  event = \"${2:VeryLazy}\",",
+      "  opts = {",
+      "    ${0}",
+      "  },",
+      "}"
+    ],
+    "description": "Lazy.nvim plugin spec"
+  }
+}

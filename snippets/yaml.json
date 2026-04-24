@@ -1,0 +1,29 @@
+{
+  "gha-workflow": {
+    "prefix": "gha",
+    "body": [
+      "name: ${1:CI}",
+      "on: [${2:push}]",
+      "jobs:",
+      "  ${3:build}:",
+      "    runs-on: ${4:ubuntu-latest}",
+      "    steps:",
+      "      - uses: actions/checkout@v4",
+      "      - name: ${5:Run}",
+      "        run: ${6:echo \"ok\"}"
+    ],
+    "description": "GitHub Actions workflow"
+  },
+  "compose-service": {
+    "prefix": "compose",
+    "body": [
+      "services:",
+      "  ${1:app}:",
+      "    image: ${2:alpine}",
+      "    command: ${3:}",
+      "    ports:",
+      "      - \"${4:3000}:3000\""
+    ],
+    "description": "Docker compose service"
+  }
+}

@@ -6,13 +6,12 @@ return {
     "yaml.helm-values",
     "yaml.kubernetes",
   },
+
   settings = {
     yaml = {
       validate = true,
       format = { enable = true },
-      completion = {
-        completionItem = { snippetSupport = false },
-      },
+
       -- Не ругаемся на порядок ключей внутри YAML
       keyOrdering = false,
 
@@ -56,7 +55,7 @@ return {
         },
 
         -- GitLab CI
-        ["https://json.schemastore.org/gitlab-ci.json"] = ".gitlab-ci.yml",
+        ["https://gitlab.com/gitlab-org/gitlab-foss/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
 
         -- Hadolint
         ["https://json.schemastore.org/hadolint.json"] = ".hadolint.yaml",
