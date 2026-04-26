@@ -6,6 +6,10 @@ return {
   },
   lazy = true,
   event = "VeryLazy",
+  init = function()
+    -- Хак-алиас для проблемных версий, ищущих 'async' напрямую
+    package.preload["async"] = function() return require "plenary.async" end
+  end,
   opts = {},
   keys = {
     { "<leader>r", "", desc = "+refactor", mode = { "n", "v" } },
