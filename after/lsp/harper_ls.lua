@@ -1,4 +1,5 @@
 return {
+  cmd = { "harper-ls" },
   filetypes = {
     "c",
     "cmake",

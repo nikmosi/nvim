@@ -34,13 +34,6 @@ vim.opt.wrap = true
 vim.o.scl = "yes"
 vim.opt.cmdheight = 0
 
-vim.opt.shell = "bash"
-vim.opt.shellcmdflag = "-c"
-vim.opt.shellredir = ">%s 2>&1"
-vim.opt.shellpipe = ">%s 2>&1"
-vim.opt.shellquote = ""
-vim.opt.shellxquote = ""
-
 local shada_dir = vim.fn.stdpath "state" .. "/shada"
 if vim.fn.filewritable(shada_dir) ~= 2 then
   vim.opt.shadafile = "/tmp/nvim.shada"

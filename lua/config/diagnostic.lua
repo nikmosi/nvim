@@ -13,21 +13,6 @@ vim.diagnostic.config {
   },
 }
 
--- Use an autocmd to set highlights after the colorscheme loads
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = function()
-    -- You can link to existing theme highlights or define your own safely
-    -- Using links is often safer and more consistent
-    vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { link = "DiagnosticUnderlineError" })
-    -- If you want specific overrides, do them here, but check if the colors exist first
-    -- For now, we'll trust the theme's defaults or just link them to ensure consistency
-    -- if the theme defines them (Tokyonight does).
-
-    -- If you absolutely need custom colors, define them here using vim.api.nvim_get_hl
-    -- or hardcoded hex if you don't want to depend on the theme module.
-  end,
-})
-
 -- Define DAP signs with JetBrains Mono Nerd icons
 vim.fn.sign_define("DapBreakpoint", {
   text = "",

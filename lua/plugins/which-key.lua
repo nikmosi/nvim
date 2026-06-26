@@ -3,6 +3,11 @@ return {
   event = "VeryLazy",
   opts = {
     delay = 500,
+    triggers = {
+      { "<auto>", mode = "n" },
+      { "g", mode = "n" },
+      { "z", mode = "n" },
+    },
   },
   keys = {
     {

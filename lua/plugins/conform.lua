@@ -29,6 +29,18 @@ return {
         prettierd = {
           command = "prettierd",
         },
+        ruff_organize_imports = {
+          command = "ruff",
+          args = {
+            "check",
+            "--select",
+            "I",
+            "--fix",
+            "--config",
+            vim.fn.stdpath "config" .. "/ruff_isort.toml",
+            "-",
+          },
+        },
       },
       default_format_opts = {
         lsp_format = "fallback",
