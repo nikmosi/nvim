@@ -25,6 +25,7 @@ vim.filetype.add {
     [".*/overlays/.*%.ya?ml"] = "yaml.kubernetes",
   },
   extension = {
+    xsh = "xonsh",
     tfvars = "terraform-vars",
     tfvarsjson = "terraform-vars",
   },

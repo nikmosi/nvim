@@ -5,7 +5,13 @@ return {
     build = ":TSUpdate",
     event = "BufRead",
     config = function()
+      local parser_install_dir = vim.fn.stdpath "data" .. "/treesitter"
+      vim.fn.mkdir(parser_install_dir, "p")
+      vim.opt.runtimepath:prepend(parser_install_dir)
+      vim.treesitter.language.register("python", "xonsh")
+
       require("nvim-treesitter.configs").setup {
+        parser_install_dir = parser_install_dir,
         ensure_installed = {
           "c",
           "python",

@@ -47,7 +47,7 @@ local function register_lsp_sugar()
   end, {
     desc = "Start a specific LSP server",
     nargs = 1,
-    complete = function() return { "pyright", "ruff", "nixd", "lua_ls", "yamlls" } end, -- Список из твоего конфига
+    complete = function() return { "pyright", "ruff", "nixd", "lua_ls", "yamlls", "xonsh_lsp" } end,
   })
 
   -- 4. LspLog: Быстрый доступ к логам (полезно для отладки твоих ошибок в /run/user/1000)
@@ -90,6 +90,7 @@ return {
       "nushell",
       "terraformls",
       "ty",
+      "xonsh_lsp",
       "pyright",
       "ruff",
       "yamlls",
