@@ -17,8 +17,13 @@ syn match gptcommitBreakingFooter "^BREAKING-CHANGE:.*$"
 hi! link gptcommitBreakingFooter WarningMsg
 
 syn clear gitcommitBlank
-syn match gitcommitBlank "^\n\@<=[^#].*" contains=@Spell,gptcommitIssueRef,gptcommitBreakingFooter
+syn match gitcommitBlank "^\n\@<=[^#].*" contains=@Spell,gptcommitIssueRef,gptcommitBreakingFooter,gitcommitAddedLine,gitcommitRemovedLine
 hi! link gitcommitBlank Normal
+
+syn match gitcommitAddedLine "^+\(+\)\@!.*" contained
+syn match gitcommitRemovedLine "^-\(-\)\@!.*" contained
+hi! link gitcommitAddedLine diffAdded
+hi! link gitcommitRemovedLine diffRemoved
 
 if exists('g:loaded_gitcommit_highlight')
   for s:m in filter(getmatches(), {i, v -> v.group =~# '^gptcommit'})
